@@ -1,0 +1,4843 @@
+{
+  "users": [
+    {
+      "id_usuario": "usr_1",
+      "nome": "Seu Antenor Silveira",
+      "email": "antenor@cuidarmais.com.br",
+      "tipo_usuario": "paciente",
+      "data_nascimento": "1954-05-18",
+      "telefone": "(69) 99234-5678",
+      "cidade": "Porto Velho - RO",
+      "condicoes": [
+        "Hipertensão Arterial Sistêmica",
+        "Diabetes Mellitus Tipo 2"
+      ],
+      "alergias": [
+        "Dipirona"
+      ],
+      "contato_emergencia": "Micael Frota (Filho) - (69) 98456-7890",
+      "preferencias": {
+        "alto_contraste": false,
+        "tamanho_fonte": "grande",
+        "alertas_sonoros": true,
+        "voz_sintetizada": true
+      }
+    },
+    {
+      "id_usuario": "usr_2",
+      "nome": "Micael Lima Araujo Frota",
+      "email": "micael@cuidarmais.com.br",
+      "tipo_usuario": "cuidador",
+      "data_nascimento": "2008-03-12",
+      "telefone": "(69) 98456-7890",
+      "cidade": "Porto Velho - RO",
+      "papel_descricao": "Filho e Cuidador Principal"
+    },
+    {
+      "id_usuario": "usr_3",
+      "nome": "Dra. Camila Vasconcelos",
+      "email": "dra.camila@saude.ro.gov.br",
+      "tipo_usuario": "profissional",
+      "data_nascimento": "1986-11-20",
+      "telefone": "(69) 99112-3344",
+      "registro_profissional": "CRM-RO 4521 / RQE 1289",
+      "especialidade": "Medicina de Família e Comunidade - APS UBS Nova Floresta"
+    }
+  ],
+  "vinculos": [
+    {
+      "id_vinculo": "vinc_1",
+      "id_paciente": "usr_1",
+      "id_cuidador": "usr_2",
+      "parentesco": "Filho / Cuidador Principal",
+      "permissao_nivel": "edicao_total",
+      "ativo": true,
+      "criado_em": "2026-01-10T10:00:00"
+    }
+  ],
+  "itens": [
+    {
+      "id_item": "item_1",
+      "id_usuario": "usr_1",
+      "tipo_item": "medicamento",
+      "descricao": "Losartana Potássica 50mg",
+      "dosagem": "1 comprimido via oral",
+      "frequencia": "1x ao dia (Manhã)",
+      "horarios": [
+        "08:00"
+      ],
+      "instrucoes": "Tomar com água antes do café da manhã",
+      "critico": true,
+      "cor": "#3B82F6",
+      "icone": "pill",
+      "ativo": true
+    },
+    {
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "tipo_item": "medicamento",
+      "descricao": "Metformina Cloridrato 850mg",
+      "dosagem": "1 comprimido",
+      "frequencia": "2x ao dia (Almoço e Jantar)",
+      "horarios": [
+        "12:30",
+        "19:30"
+      ],
+      "instrucoes": "Tomar logo após as refeições para evitar desconforto gástrico",
+      "critico": true,
+      "cor": "#10B981",
+      "icone": "pill",
+      "ativo": true
+    },
+    {
+      "id_item": "item_3",
+      "id_usuario": "usr_1",
+      "tipo_item": "medicamento",
+      "descricao": "Anlodipino 5mg",
+      "dosagem": "1 comprimido",
+      "frequencia": "1x ao dia (Noite)",
+      "horarios": [
+        "21:00"
+      ],
+      "instrucoes": "Tomar antes de dormir",
+      "critico": false,
+      "cor": "#8B5CF6",
+      "icone": "pill",
+      "ativo": true
+    },
+    {
+      "id_item": "item_4",
+      "id_usuario": "usr_1",
+      "tipo_item": "medicao",
+      "descricao": "Aferição de Pressão Arterial",
+      "dosagem": "Registrar Sistólica / Diastólica",
+      "frequencia": "2x ao dia",
+      "horarios": [
+        "08:30",
+        "18:00"
+      ],
+      "instrucoes": "Descansar 5 minutos sentado antes de medir",
+      "critico": true,
+      "cor": "#EF4444",
+      "icone": "heart-pulse",
+      "ativo": true
+    },
+    {
+      "id_item": "item_5",
+      "id_usuario": "usr_1",
+      "tipo_item": "medicao",
+      "descricao": "Glicemia Capilar (HGT)",
+      "dosagem": "Medir com fitinha no glicosímetro",
+      "frequencia": "1x ao dia em jejum",
+      "horarios": [
+        "07:30"
+      ],
+      "instrucoes": "Anotar se foi jejum ou pós-refeição",
+      "critico": true,
+      "cor": "#F59E0B",
+      "icone": "droplet",
+      "ativo": true
+    },
+    {
+      "id_item": "item_6",
+      "id_usuario": "usr_1",
+      "tipo_item": "consulta",
+      "descricao": "Consulta de Acompanhamento com Dra. Camila",
+      "dosagem": "Apresentar resumo de adesão do Cuidar+",
+      "frequencia": "Retorno mensal",
+      "horarios": [
+        "09:30"
+      ],
+      "data_especifica": "2026-10-25",
+      "instrucoes": "Levar cartão do SUS e exames de sangue",
+      "critico": true,
+      "cor": "#06B6D4",
+      "icone": "calendar",
+      "ativo": true
+    },
+    {
+      "id_item": "item_7",
+      "id_usuario": "usr_1",
+      "tipo_item": "exame",
+      "descricao": "Hemoglobina Glicada (HbA1c) e Perfil Lipídico",
+      "dosagem": "Coleta de sangue no posto",
+      "frequencia": "Trimestral",
+      "horarios": [
+        "07:00"
+      ],
+      "data_especifica": "2026-10-20",
+      "instrucoes": "Jejum obrigatório de 10 a 12 horas",
+      "critico": true,
+      "cor": "#EC4899",
+      "icone": "file-text",
+      "ativo": true
+    }
+  ],
+  "agendamentos": [
+    {
+      "id_agendamento": "ag_1",
+      "id_item": "item_1",
+      "id_usuario": "usr_1",
+      "descricao_item": "Losartana Potássica 50mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-14T08:00:00",
+      "data": "2026-09-14",
+      "hora": "08:00",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_2",
+      "id_item": "item_5",
+      "id_usuario": "usr_1",
+      "descricao_item": "Glicemia Capilar (HGT)",
+      "dosagem": "Em jejum",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-14T07:30:00",
+      "data": "2026-09-14",
+      "hora": "07:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_3",
+      "id_item": "item_4",
+      "id_usuario": "usr_1",
+      "descricao_item": "Aferição de Pressão Arterial",
+      "dosagem": "Sentado em repouso",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-14T08:30:00",
+      "data": "2026-09-14",
+      "hora": "08:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_4",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Almoço)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-14T12:30:00",
+      "data": "2026-09-14",
+      "hora": "12:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_5",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Jantar)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-14T19:30:00",
+      "data": "2026-09-14",
+      "hora": "19:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_6",
+      "id_item": "item_3",
+      "id_usuario": "usr_1",
+      "descricao_item": "Anlodipino 5mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-14T21:00:00",
+      "data": "2026-09-14",
+      "hora": "21:00",
+      "critico": false,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_7",
+      "id_item": "item_1",
+      "id_usuario": "usr_1",
+      "descricao_item": "Losartana Potássica 50mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-15T08:00:00",
+      "data": "2026-09-15",
+      "hora": "08:00",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_8",
+      "id_item": "item_5",
+      "id_usuario": "usr_1",
+      "descricao_item": "Glicemia Capilar (HGT)",
+      "dosagem": "Em jejum",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-15T07:30:00",
+      "data": "2026-09-15",
+      "hora": "07:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_9",
+      "id_item": "item_4",
+      "id_usuario": "usr_1",
+      "descricao_item": "Aferição de Pressão Arterial",
+      "dosagem": "Sentado em repouso",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-15T08:30:00",
+      "data": "2026-09-15",
+      "hora": "08:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_10",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Almoço)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-15T12:30:00",
+      "data": "2026-09-15",
+      "hora": "12:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_11",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Jantar)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-15T19:30:00",
+      "data": "2026-09-15",
+      "hora": "19:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_12",
+      "id_item": "item_3",
+      "id_usuario": "usr_1",
+      "descricao_item": "Anlodipino 5mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-15T21:00:00",
+      "data": "2026-09-15",
+      "hora": "21:00",
+      "critico": false,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_13",
+      "id_item": "item_1",
+      "id_usuario": "usr_1",
+      "descricao_item": "Losartana Potássica 50mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-16T08:00:00",
+      "data": "2026-09-16",
+      "hora": "08:00",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_14",
+      "id_item": "item_5",
+      "id_usuario": "usr_1",
+      "descricao_item": "Glicemia Capilar (HGT)",
+      "dosagem": "Em jejum",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-16T07:30:00",
+      "data": "2026-09-16",
+      "hora": "07:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_15",
+      "id_item": "item_4",
+      "id_usuario": "usr_1",
+      "descricao_item": "Aferição de Pressão Arterial",
+      "dosagem": "Sentado em repouso",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-16T08:30:00",
+      "data": "2026-09-16",
+      "hora": "08:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_16",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Almoço)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-16T12:30:00",
+      "data": "2026-09-16",
+      "hora": "12:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_17",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Jantar)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-16T19:30:00",
+      "data": "2026-09-16",
+      "hora": "19:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_18",
+      "id_item": "item_3",
+      "id_usuario": "usr_1",
+      "descricao_item": "Anlodipino 5mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-16T21:00:00",
+      "data": "2026-09-16",
+      "hora": "21:00",
+      "critico": false,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_19",
+      "id_item": "item_1",
+      "id_usuario": "usr_1",
+      "descricao_item": "Losartana Potássica 50mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-17T08:00:00",
+      "data": "2026-09-17",
+      "hora": "08:00",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_20",
+      "id_item": "item_5",
+      "id_usuario": "usr_1",
+      "descricao_item": "Glicemia Capilar (HGT)",
+      "dosagem": "Em jejum",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-17T07:30:00",
+      "data": "2026-09-17",
+      "hora": "07:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_21",
+      "id_item": "item_4",
+      "id_usuario": "usr_1",
+      "descricao_item": "Aferição de Pressão Arterial",
+      "dosagem": "Sentado em repouso",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-17T08:30:00",
+      "data": "2026-09-17",
+      "hora": "08:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_22",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Almoço)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-17T12:30:00",
+      "data": "2026-09-17",
+      "hora": "12:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_23",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Jantar)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-17T19:30:00",
+      "data": "2026-09-17",
+      "hora": "19:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_24",
+      "id_item": "item_3",
+      "id_usuario": "usr_1",
+      "descricao_item": "Anlodipino 5mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-17T21:00:00",
+      "data": "2026-09-17",
+      "hora": "21:00",
+      "critico": false,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_25",
+      "id_item": "item_1",
+      "id_usuario": "usr_1",
+      "descricao_item": "Losartana Potássica 50mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-18T08:00:00",
+      "data": "2026-09-18",
+      "hora": "08:00",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_26",
+      "id_item": "item_5",
+      "id_usuario": "usr_1",
+      "descricao_item": "Glicemia Capilar (HGT)",
+      "dosagem": "Em jejum",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-18T07:30:00",
+      "data": "2026-09-18",
+      "hora": "07:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_27",
+      "id_item": "item_4",
+      "id_usuario": "usr_1",
+      "descricao_item": "Aferição de Pressão Arterial",
+      "dosagem": "Sentado em repouso",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-18T08:30:00",
+      "data": "2026-09-18",
+      "hora": "08:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_28",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Almoço)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-18T12:30:00",
+      "data": "2026-09-18",
+      "hora": "12:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_29",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Jantar)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-18T19:30:00",
+      "data": "2026-09-18",
+      "hora": "19:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_30",
+      "id_item": "item_3",
+      "id_usuario": "usr_1",
+      "descricao_item": "Anlodipino 5mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-18T21:00:00",
+      "data": "2026-09-18",
+      "hora": "21:00",
+      "critico": false,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_31",
+      "id_item": "item_1",
+      "id_usuario": "usr_1",
+      "descricao_item": "Losartana Potássica 50mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-19T08:00:00",
+      "data": "2026-09-19",
+      "hora": "08:00",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_32",
+      "id_item": "item_5",
+      "id_usuario": "usr_1",
+      "descricao_item": "Glicemia Capilar (HGT)",
+      "dosagem": "Em jejum",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-19T07:30:00",
+      "data": "2026-09-19",
+      "hora": "07:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_33",
+      "id_item": "item_4",
+      "id_usuario": "usr_1",
+      "descricao_item": "Aferição de Pressão Arterial",
+      "dosagem": "Sentado em repouso",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-19T08:30:00",
+      "data": "2026-09-19",
+      "hora": "08:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_34",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Almoço)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-19T12:30:00",
+      "data": "2026-09-19",
+      "hora": "12:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_35",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Jantar)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-19T19:30:00",
+      "data": "2026-09-19",
+      "hora": "19:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_36",
+      "id_item": "item_3",
+      "id_usuario": "usr_1",
+      "descricao_item": "Anlodipino 5mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-19T21:00:00",
+      "data": "2026-09-19",
+      "hora": "21:00",
+      "critico": false,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_37",
+      "id_item": "item_1",
+      "id_usuario": "usr_1",
+      "descricao_item": "Losartana Potássica 50mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-20T08:00:00",
+      "data": "2026-09-20",
+      "hora": "08:00",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_38",
+      "id_item": "item_5",
+      "id_usuario": "usr_1",
+      "descricao_item": "Glicemia Capilar (HGT)",
+      "dosagem": "Em jejum",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-20T07:30:00",
+      "data": "2026-09-20",
+      "hora": "07:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_39",
+      "id_item": "item_4",
+      "id_usuario": "usr_1",
+      "descricao_item": "Aferição de Pressão Arterial",
+      "dosagem": "Sentado em repouso",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-20T08:30:00",
+      "data": "2026-09-20",
+      "hora": "08:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_40",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Almoço)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-20T12:30:00",
+      "data": "2026-09-20",
+      "hora": "12:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_41",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Jantar)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-20T19:30:00",
+      "data": "2026-09-20",
+      "hora": "19:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_42",
+      "id_item": "item_3",
+      "id_usuario": "usr_1",
+      "descricao_item": "Anlodipino 5mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-20T21:00:00",
+      "data": "2026-09-20",
+      "hora": "21:00",
+      "critico": false,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_43",
+      "id_item": "item_1",
+      "id_usuario": "usr_1",
+      "descricao_item": "Losartana Potássica 50mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-21T08:00:00",
+      "data": "2026-09-21",
+      "hora": "08:00",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_44",
+      "id_item": "item_5",
+      "id_usuario": "usr_1",
+      "descricao_item": "Glicemia Capilar (HGT)",
+      "dosagem": "Em jejum",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-21T07:30:00",
+      "data": "2026-09-21",
+      "hora": "07:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_45",
+      "id_item": "item_4",
+      "id_usuario": "usr_1",
+      "descricao_item": "Aferição de Pressão Arterial",
+      "dosagem": "Sentado em repouso",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-21T08:30:00",
+      "data": "2026-09-21",
+      "hora": "08:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_46",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Almoço)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-21T12:30:00",
+      "data": "2026-09-21",
+      "hora": "12:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_47",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Jantar)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-21T19:30:00",
+      "data": "2026-09-21",
+      "hora": "19:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_48",
+      "id_item": "item_3",
+      "id_usuario": "usr_1",
+      "descricao_item": "Anlodipino 5mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-21T21:00:00",
+      "data": "2026-09-21",
+      "hora": "21:00",
+      "critico": false,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_49",
+      "id_item": "item_1",
+      "id_usuario": "usr_1",
+      "descricao_item": "Losartana Potássica 50mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-22T08:00:00",
+      "data": "2026-09-22",
+      "hora": "08:00",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_50",
+      "id_item": "item_5",
+      "id_usuario": "usr_1",
+      "descricao_item": "Glicemia Capilar (HGT)",
+      "dosagem": "Em jejum",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-22T07:30:00",
+      "data": "2026-09-22",
+      "hora": "07:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_51",
+      "id_item": "item_4",
+      "id_usuario": "usr_1",
+      "descricao_item": "Aferição de Pressão Arterial",
+      "dosagem": "Sentado em repouso",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-22T08:30:00",
+      "data": "2026-09-22",
+      "hora": "08:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_52",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Almoço)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-22T12:30:00",
+      "data": "2026-09-22",
+      "hora": "12:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_53",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Jantar)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-22T19:30:00",
+      "data": "2026-09-22",
+      "hora": "19:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_54",
+      "id_item": "item_3",
+      "id_usuario": "usr_1",
+      "descricao_item": "Anlodipino 5mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-22T21:00:00",
+      "data": "2026-09-22",
+      "hora": "21:00",
+      "critico": false,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_55",
+      "id_item": "item_1",
+      "id_usuario": "usr_1",
+      "descricao_item": "Losartana Potássica 50mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-23T08:00:00",
+      "data": "2026-09-23",
+      "hora": "08:00",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_56",
+      "id_item": "item_5",
+      "id_usuario": "usr_1",
+      "descricao_item": "Glicemia Capilar (HGT)",
+      "dosagem": "Em jejum",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-23T07:30:00",
+      "data": "2026-09-23",
+      "hora": "07:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_57",
+      "id_item": "item_4",
+      "id_usuario": "usr_1",
+      "descricao_item": "Aferição de Pressão Arterial",
+      "dosagem": "Sentado em repouso",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-23T08:30:00",
+      "data": "2026-09-23",
+      "hora": "08:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_58",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Almoço)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-23T12:30:00",
+      "data": "2026-09-23",
+      "hora": "12:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_59",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Jantar)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-23T19:30:00",
+      "data": "2026-09-23",
+      "hora": "19:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_60",
+      "id_item": "item_3",
+      "id_usuario": "usr_1",
+      "descricao_item": "Anlodipino 5mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-23T21:00:00",
+      "data": "2026-09-23",
+      "hora": "21:00",
+      "critico": false,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_61",
+      "id_item": "item_1",
+      "id_usuario": "usr_1",
+      "descricao_item": "Losartana Potássica 50mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-24T08:00:00",
+      "data": "2026-09-24",
+      "hora": "08:00",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_62",
+      "id_item": "item_5",
+      "id_usuario": "usr_1",
+      "descricao_item": "Glicemia Capilar (HGT)",
+      "dosagem": "Em jejum",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-24T07:30:00",
+      "data": "2026-09-24",
+      "hora": "07:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_63",
+      "id_item": "item_4",
+      "id_usuario": "usr_1",
+      "descricao_item": "Aferição de Pressão Arterial",
+      "dosagem": "Sentado em repouso",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-24T08:30:00",
+      "data": "2026-09-24",
+      "hora": "08:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_64",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Almoço)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-24T12:30:00",
+      "data": "2026-09-24",
+      "hora": "12:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_65",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Jantar)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-24T19:30:00",
+      "data": "2026-09-24",
+      "hora": "19:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_66",
+      "id_item": "item_3",
+      "id_usuario": "usr_1",
+      "descricao_item": "Anlodipino 5mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-24T21:00:00",
+      "data": "2026-09-24",
+      "hora": "21:00",
+      "critico": false,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_67",
+      "id_item": "item_1",
+      "id_usuario": "usr_1",
+      "descricao_item": "Losartana Potássica 50mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-25T08:00:00",
+      "data": "2026-09-25",
+      "hora": "08:00",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_68",
+      "id_item": "item_5",
+      "id_usuario": "usr_1",
+      "descricao_item": "Glicemia Capilar (HGT)",
+      "dosagem": "Em jejum",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-25T07:30:00",
+      "data": "2026-09-25",
+      "hora": "07:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_69",
+      "id_item": "item_4",
+      "id_usuario": "usr_1",
+      "descricao_item": "Aferição de Pressão Arterial",
+      "dosagem": "Sentado em repouso",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-25T08:30:00",
+      "data": "2026-09-25",
+      "hora": "08:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_70",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Almoço)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-25T12:30:00",
+      "data": "2026-09-25",
+      "hora": "12:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_71",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Jantar)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-25T19:30:00",
+      "data": "2026-09-25",
+      "hora": "19:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_72",
+      "id_item": "item_3",
+      "id_usuario": "usr_1",
+      "descricao_item": "Anlodipino 5mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-25T21:00:00",
+      "data": "2026-09-25",
+      "hora": "21:00",
+      "critico": false,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_73",
+      "id_item": "item_1",
+      "id_usuario": "usr_1",
+      "descricao_item": "Losartana Potássica 50mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-26T08:00:00",
+      "data": "2026-09-26",
+      "hora": "08:00",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_74",
+      "id_item": "item_5",
+      "id_usuario": "usr_1",
+      "descricao_item": "Glicemia Capilar (HGT)",
+      "dosagem": "Em jejum",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-26T07:30:00",
+      "data": "2026-09-26",
+      "hora": "07:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_75",
+      "id_item": "item_4",
+      "id_usuario": "usr_1",
+      "descricao_item": "Aferição de Pressão Arterial",
+      "dosagem": "Sentado em repouso",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-26T08:30:00",
+      "data": "2026-09-26",
+      "hora": "08:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_76",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Almoço)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-26T12:30:00",
+      "data": "2026-09-26",
+      "hora": "12:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_77",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Jantar)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-26T19:30:00",
+      "data": "2026-09-26",
+      "hora": "19:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_78",
+      "id_item": "item_3",
+      "id_usuario": "usr_1",
+      "descricao_item": "Anlodipino 5mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-26T21:00:00",
+      "data": "2026-09-26",
+      "hora": "21:00",
+      "critico": false,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_79",
+      "id_item": "item_1",
+      "id_usuario": "usr_1",
+      "descricao_item": "Losartana Potássica 50mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-27T08:00:00",
+      "data": "2026-09-27",
+      "hora": "08:00",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_80",
+      "id_item": "item_5",
+      "id_usuario": "usr_1",
+      "descricao_item": "Glicemia Capilar (HGT)",
+      "dosagem": "Em jejum",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-27T07:30:00",
+      "data": "2026-09-27",
+      "hora": "07:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_81",
+      "id_item": "item_4",
+      "id_usuario": "usr_1",
+      "descricao_item": "Aferição de Pressão Arterial",
+      "dosagem": "Sentado em repouso",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-27T08:30:00",
+      "data": "2026-09-27",
+      "hora": "08:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_82",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Almoço)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-27T12:30:00",
+      "data": "2026-09-27",
+      "hora": "12:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_83",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Jantar)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-27T19:30:00",
+      "data": "2026-09-27",
+      "hora": "19:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_84",
+      "id_item": "item_3",
+      "id_usuario": "usr_1",
+      "descricao_item": "Anlodipino 5mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-27T21:00:00",
+      "data": "2026-09-27",
+      "hora": "21:00",
+      "critico": false,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_85",
+      "id_item": "item_1",
+      "id_usuario": "usr_1",
+      "descricao_item": "Losartana Potássica 50mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-28T08:00:00",
+      "data": "2026-09-28",
+      "hora": "08:00",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_86",
+      "id_item": "item_5",
+      "id_usuario": "usr_1",
+      "descricao_item": "Glicemia Capilar (HGT)",
+      "dosagem": "Em jejum",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-28T07:30:00",
+      "data": "2026-09-28",
+      "hora": "07:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_87",
+      "id_item": "item_4",
+      "id_usuario": "usr_1",
+      "descricao_item": "Aferição de Pressão Arterial",
+      "dosagem": "Sentado em repouso",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-28T08:30:00",
+      "data": "2026-09-28",
+      "hora": "08:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_88",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Almoço)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-28T12:30:00",
+      "data": "2026-09-28",
+      "hora": "12:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_89",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Jantar)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-28T19:30:00",
+      "data": "2026-09-28",
+      "hora": "19:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_90",
+      "id_item": "item_3",
+      "id_usuario": "usr_1",
+      "descricao_item": "Anlodipino 5mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-28T21:00:00",
+      "data": "2026-09-28",
+      "hora": "21:00",
+      "critico": false,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_91",
+      "id_item": "item_1",
+      "id_usuario": "usr_1",
+      "descricao_item": "Losartana Potássica 50mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-29T08:00:00",
+      "data": "2026-09-29",
+      "hora": "08:00",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_92",
+      "id_item": "item_5",
+      "id_usuario": "usr_1",
+      "descricao_item": "Glicemia Capilar (HGT)",
+      "dosagem": "Em jejum",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-29T07:30:00",
+      "data": "2026-09-29",
+      "hora": "07:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_93",
+      "id_item": "item_4",
+      "id_usuario": "usr_1",
+      "descricao_item": "Aferição de Pressão Arterial",
+      "dosagem": "Sentado em repouso",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-29T08:30:00",
+      "data": "2026-09-29",
+      "hora": "08:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_94",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Almoço)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-29T12:30:00",
+      "data": "2026-09-29",
+      "hora": "12:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_95",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Jantar)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-29T19:30:00",
+      "data": "2026-09-29",
+      "hora": "19:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_96",
+      "id_item": "item_3",
+      "id_usuario": "usr_1",
+      "descricao_item": "Anlodipino 5mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-29T21:00:00",
+      "data": "2026-09-29",
+      "hora": "21:00",
+      "critico": false,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_97",
+      "id_item": "item_1",
+      "id_usuario": "usr_1",
+      "descricao_item": "Losartana Potássica 50mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-30T08:00:00",
+      "data": "2026-09-30",
+      "hora": "08:00",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_98",
+      "id_item": "item_5",
+      "id_usuario": "usr_1",
+      "descricao_item": "Glicemia Capilar (HGT)",
+      "dosagem": "Em jejum",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-30T07:30:00",
+      "data": "2026-09-30",
+      "hora": "07:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_99",
+      "id_item": "item_4",
+      "id_usuario": "usr_1",
+      "descricao_item": "Aferição de Pressão Arterial",
+      "dosagem": "Sentado em repouso",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-09-30T08:30:00",
+      "data": "2026-09-30",
+      "hora": "08:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_100",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Almoço)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-30T12:30:00",
+      "data": "2026-09-30",
+      "hora": "12:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_101",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Jantar)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-30T19:30:00",
+      "data": "2026-09-30",
+      "hora": "19:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_102",
+      "id_item": "item_3",
+      "id_usuario": "usr_1",
+      "descricao_item": "Anlodipino 5mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-09-30T21:00:00",
+      "data": "2026-09-30",
+      "hora": "21:00",
+      "critico": false,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_103",
+      "id_item": "item_1",
+      "id_usuario": "usr_1",
+      "descricao_item": "Losartana Potássica 50mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-01T08:00:00",
+      "data": "2026-10-01",
+      "hora": "08:00",
+      "critico": true,
+      "status": "justificado"
+    },
+    {
+      "id_agendamento": "ag_104",
+      "id_item": "item_5",
+      "id_usuario": "usr_1",
+      "descricao_item": "Glicemia Capilar (HGT)",
+      "dosagem": "Em jejum",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-10-01T07:30:00",
+      "data": "2026-10-01",
+      "hora": "07:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_105",
+      "id_item": "item_4",
+      "id_usuario": "usr_1",
+      "descricao_item": "Aferição de Pressão Arterial",
+      "dosagem": "Sentado em repouso",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-10-01T08:30:00",
+      "data": "2026-10-01",
+      "hora": "08:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_106",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Almoço)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-01T12:30:00",
+      "data": "2026-10-01",
+      "hora": "12:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_107",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Jantar)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-01T19:30:00",
+      "data": "2026-10-01",
+      "hora": "19:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_108",
+      "id_item": "item_3",
+      "id_usuario": "usr_1",
+      "descricao_item": "Anlodipino 5mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-01T21:00:00",
+      "data": "2026-10-01",
+      "hora": "21:00",
+      "critico": false,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_109",
+      "id_item": "item_1",
+      "id_usuario": "usr_1",
+      "descricao_item": "Losartana Potássica 50mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-02T08:00:00",
+      "data": "2026-10-02",
+      "hora": "08:00",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_110",
+      "id_item": "item_5",
+      "id_usuario": "usr_1",
+      "descricao_item": "Glicemia Capilar (HGT)",
+      "dosagem": "Em jejum",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-10-02T07:30:00",
+      "data": "2026-10-02",
+      "hora": "07:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_111",
+      "id_item": "item_4",
+      "id_usuario": "usr_1",
+      "descricao_item": "Aferição de Pressão Arterial",
+      "dosagem": "Sentado em repouso",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-10-02T08:30:00",
+      "data": "2026-10-02",
+      "hora": "08:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_112",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Almoço)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-02T12:30:00",
+      "data": "2026-10-02",
+      "hora": "12:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_113",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Jantar)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-02T19:30:00",
+      "data": "2026-10-02",
+      "hora": "19:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_114",
+      "id_item": "item_3",
+      "id_usuario": "usr_1",
+      "descricao_item": "Anlodipino 5mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-02T21:00:00",
+      "data": "2026-10-02",
+      "hora": "21:00",
+      "critico": false,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_115",
+      "id_item": "item_1",
+      "id_usuario": "usr_1",
+      "descricao_item": "Losartana Potássica 50mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-03T08:00:00",
+      "data": "2026-10-03",
+      "hora": "08:00",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_116",
+      "id_item": "item_5",
+      "id_usuario": "usr_1",
+      "descricao_item": "Glicemia Capilar (HGT)",
+      "dosagem": "Em jejum",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-10-03T07:30:00",
+      "data": "2026-10-03",
+      "hora": "07:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_117",
+      "id_item": "item_4",
+      "id_usuario": "usr_1",
+      "descricao_item": "Aferição de Pressão Arterial",
+      "dosagem": "Sentado em repouso",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-10-03T08:30:00",
+      "data": "2026-10-03",
+      "hora": "08:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_118",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Almoço)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-03T12:30:00",
+      "data": "2026-10-03",
+      "hora": "12:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_119",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Jantar)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-03T19:30:00",
+      "data": "2026-10-03",
+      "hora": "19:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_120",
+      "id_item": "item_3",
+      "id_usuario": "usr_1",
+      "descricao_item": "Anlodipino 5mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-03T21:00:00",
+      "data": "2026-10-03",
+      "hora": "21:00",
+      "critico": false,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_121",
+      "id_item": "item_1",
+      "id_usuario": "usr_1",
+      "descricao_item": "Losartana Potássica 50mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-04T08:00:00",
+      "data": "2026-10-04",
+      "hora": "08:00",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_122",
+      "id_item": "item_5",
+      "id_usuario": "usr_1",
+      "descricao_item": "Glicemia Capilar (HGT)",
+      "dosagem": "Em jejum",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-10-04T07:30:00",
+      "data": "2026-10-04",
+      "hora": "07:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_123",
+      "id_item": "item_4",
+      "id_usuario": "usr_1",
+      "descricao_item": "Aferição de Pressão Arterial",
+      "dosagem": "Sentado em repouso",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-10-04T08:30:00",
+      "data": "2026-10-04",
+      "hora": "08:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_124",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Almoço)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-04T12:30:00",
+      "data": "2026-10-04",
+      "hora": "12:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_125",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Jantar)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-04T19:30:00",
+      "data": "2026-10-04",
+      "hora": "19:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_126",
+      "id_item": "item_3",
+      "id_usuario": "usr_1",
+      "descricao_item": "Anlodipino 5mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-04T21:00:00",
+      "data": "2026-10-04",
+      "hora": "21:00",
+      "critico": false,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_127",
+      "id_item": "item_1",
+      "id_usuario": "usr_1",
+      "descricao_item": "Losartana Potássica 50mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-05T08:00:00",
+      "data": "2026-10-05",
+      "hora": "08:00",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_128",
+      "id_item": "item_5",
+      "id_usuario": "usr_1",
+      "descricao_item": "Glicemia Capilar (HGT)",
+      "dosagem": "Em jejum",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-10-05T07:30:00",
+      "data": "2026-10-05",
+      "hora": "07:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_129",
+      "id_item": "item_4",
+      "id_usuario": "usr_1",
+      "descricao_item": "Aferição de Pressão Arterial",
+      "dosagem": "Sentado em repouso",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-10-05T08:30:00",
+      "data": "2026-10-05",
+      "hora": "08:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_130",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Almoço)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-05T12:30:00",
+      "data": "2026-10-05",
+      "hora": "12:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_131",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Jantar)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-05T19:30:00",
+      "data": "2026-10-05",
+      "hora": "19:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_132",
+      "id_item": "item_3",
+      "id_usuario": "usr_1",
+      "descricao_item": "Anlodipino 5mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-05T21:00:00",
+      "data": "2026-10-05",
+      "hora": "21:00",
+      "critico": false,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_133",
+      "id_item": "item_1",
+      "id_usuario": "usr_1",
+      "descricao_item": "Losartana Potássica 50mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-06T08:00:00",
+      "data": "2026-10-06",
+      "hora": "08:00",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_134",
+      "id_item": "item_5",
+      "id_usuario": "usr_1",
+      "descricao_item": "Glicemia Capilar (HGT)",
+      "dosagem": "Em jejum",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-10-06T07:30:00",
+      "data": "2026-10-06",
+      "hora": "07:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_135",
+      "id_item": "item_4",
+      "id_usuario": "usr_1",
+      "descricao_item": "Aferição de Pressão Arterial",
+      "dosagem": "Sentado em repouso",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-10-06T08:30:00",
+      "data": "2026-10-06",
+      "hora": "08:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_136",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Almoço)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-06T12:30:00",
+      "data": "2026-10-06",
+      "hora": "12:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_137",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Jantar)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-06T19:30:00",
+      "data": "2026-10-06",
+      "hora": "19:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_138",
+      "id_item": "item_3",
+      "id_usuario": "usr_1",
+      "descricao_item": "Anlodipino 5mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-06T21:00:00",
+      "data": "2026-10-06",
+      "hora": "21:00",
+      "critico": false,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_139",
+      "id_item": "item_1",
+      "id_usuario": "usr_1",
+      "descricao_item": "Losartana Potássica 50mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-07T08:00:00",
+      "data": "2026-10-07",
+      "hora": "08:00",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_140",
+      "id_item": "item_5",
+      "id_usuario": "usr_1",
+      "descricao_item": "Glicemia Capilar (HGT)",
+      "dosagem": "Em jejum",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-10-07T07:30:00",
+      "data": "2026-10-07",
+      "hora": "07:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_141",
+      "id_item": "item_4",
+      "id_usuario": "usr_1",
+      "descricao_item": "Aferição de Pressão Arterial",
+      "dosagem": "Sentado em repouso",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-10-07T08:30:00",
+      "data": "2026-10-07",
+      "hora": "08:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_142",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Almoço)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-07T12:30:00",
+      "data": "2026-10-07",
+      "hora": "12:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_143",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Jantar)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-07T19:30:00",
+      "data": "2026-10-07",
+      "hora": "19:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_144",
+      "id_item": "item_3",
+      "id_usuario": "usr_1",
+      "descricao_item": "Anlodipino 5mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-07T21:00:00",
+      "data": "2026-10-07",
+      "hora": "21:00",
+      "critico": false,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_145",
+      "id_item": "item_1",
+      "id_usuario": "usr_1",
+      "descricao_item": "Losartana Potássica 50mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-08T08:00:00",
+      "data": "2026-10-08",
+      "hora": "08:00",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_146",
+      "id_item": "item_5",
+      "id_usuario": "usr_1",
+      "descricao_item": "Glicemia Capilar (HGT)",
+      "dosagem": "Em jejum",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-10-08T07:30:00",
+      "data": "2026-10-08",
+      "hora": "07:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_147",
+      "id_item": "item_4",
+      "id_usuario": "usr_1",
+      "descricao_item": "Aferição de Pressão Arterial",
+      "dosagem": "Sentado em repouso",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-10-08T08:30:00",
+      "data": "2026-10-08",
+      "hora": "08:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_148",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Almoço)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-08T12:30:00",
+      "data": "2026-10-08",
+      "hora": "12:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_149",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Jantar)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-08T19:30:00",
+      "data": "2026-10-08",
+      "hora": "19:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_150",
+      "id_item": "item_3",
+      "id_usuario": "usr_1",
+      "descricao_item": "Anlodipino 5mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-08T21:00:00",
+      "data": "2026-10-08",
+      "hora": "21:00",
+      "critico": false,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_151",
+      "id_item": "item_1",
+      "id_usuario": "usr_1",
+      "descricao_item": "Losartana Potássica 50mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-09T08:00:00",
+      "data": "2026-10-09",
+      "hora": "08:00",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_152",
+      "id_item": "item_5",
+      "id_usuario": "usr_1",
+      "descricao_item": "Glicemia Capilar (HGT)",
+      "dosagem": "Em jejum",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-10-09T07:30:00",
+      "data": "2026-10-09",
+      "hora": "07:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_153",
+      "id_item": "item_4",
+      "id_usuario": "usr_1",
+      "descricao_item": "Aferição de Pressão Arterial",
+      "dosagem": "Sentado em repouso",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-10-09T08:30:00",
+      "data": "2026-10-09",
+      "hora": "08:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_154",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Almoço)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-09T12:30:00",
+      "data": "2026-10-09",
+      "hora": "12:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_155",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Jantar)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-09T19:30:00",
+      "data": "2026-10-09",
+      "hora": "19:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_156",
+      "id_item": "item_3",
+      "id_usuario": "usr_1",
+      "descricao_item": "Anlodipino 5mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-09T21:00:00",
+      "data": "2026-10-09",
+      "hora": "21:00",
+      "critico": false,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_157",
+      "id_item": "item_1",
+      "id_usuario": "usr_1",
+      "descricao_item": "Losartana Potássica 50mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-10T08:00:00",
+      "data": "2026-10-10",
+      "hora": "08:00",
+      "critico": true,
+      "status": "justificado"
+    },
+    {
+      "id_agendamento": "ag_158",
+      "id_item": "item_5",
+      "id_usuario": "usr_1",
+      "descricao_item": "Glicemia Capilar (HGT)",
+      "dosagem": "Em jejum",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-10-10T07:30:00",
+      "data": "2026-10-10",
+      "hora": "07:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_159",
+      "id_item": "item_4",
+      "id_usuario": "usr_1",
+      "descricao_item": "Aferição de Pressão Arterial",
+      "dosagem": "Sentado em repouso",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-10-10T08:30:00",
+      "data": "2026-10-10",
+      "hora": "08:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_160",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Almoço)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-10T12:30:00",
+      "data": "2026-10-10",
+      "hora": "12:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_161",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Jantar)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-10T19:30:00",
+      "data": "2026-10-10",
+      "hora": "19:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_162",
+      "id_item": "item_3",
+      "id_usuario": "usr_1",
+      "descricao_item": "Anlodipino 5mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-10T21:00:00",
+      "data": "2026-10-10",
+      "hora": "21:00",
+      "critico": false,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_163",
+      "id_item": "item_1",
+      "id_usuario": "usr_1",
+      "descricao_item": "Losartana Potássica 50mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-11T08:00:00",
+      "data": "2026-10-11",
+      "hora": "08:00",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_164",
+      "id_item": "item_5",
+      "id_usuario": "usr_1",
+      "descricao_item": "Glicemia Capilar (HGT)",
+      "dosagem": "Em jejum",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-10-11T07:30:00",
+      "data": "2026-10-11",
+      "hora": "07:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_165",
+      "id_item": "item_4",
+      "id_usuario": "usr_1",
+      "descricao_item": "Aferição de Pressão Arterial",
+      "dosagem": "Sentado em repouso",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-10-11T08:30:00",
+      "data": "2026-10-11",
+      "hora": "08:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_166",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Almoço)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-11T12:30:00",
+      "data": "2026-10-11",
+      "hora": "12:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_167",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Jantar)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-11T19:30:00",
+      "data": "2026-10-11",
+      "hora": "19:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_168",
+      "id_item": "item_3",
+      "id_usuario": "usr_1",
+      "descricao_item": "Anlodipino 5mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-11T21:00:00",
+      "data": "2026-10-11",
+      "hora": "21:00",
+      "critico": false,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_169",
+      "id_item": "item_1",
+      "id_usuario": "usr_1",
+      "descricao_item": "Losartana Potássica 50mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-12T08:00:00",
+      "data": "2026-10-12",
+      "hora": "08:00",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_170",
+      "id_item": "item_5",
+      "id_usuario": "usr_1",
+      "descricao_item": "Glicemia Capilar (HGT)",
+      "dosagem": "Em jejum",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-10-12T07:30:00",
+      "data": "2026-10-12",
+      "hora": "07:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_171",
+      "id_item": "item_4",
+      "id_usuario": "usr_1",
+      "descricao_item": "Aferição de Pressão Arterial",
+      "dosagem": "Sentado em repouso",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-10-12T08:30:00",
+      "data": "2026-10-12",
+      "hora": "08:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_172",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Almoço)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-12T12:30:00",
+      "data": "2026-10-12",
+      "hora": "12:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_173",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Jantar)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-12T19:30:00",
+      "data": "2026-10-12",
+      "hora": "19:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_174",
+      "id_item": "item_3",
+      "id_usuario": "usr_1",
+      "descricao_item": "Anlodipino 5mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-12T21:00:00",
+      "data": "2026-10-12",
+      "hora": "21:00",
+      "critico": false,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_175",
+      "id_item": "item_1",
+      "id_usuario": "usr_1",
+      "descricao_item": "Losartana Potássica 50mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-13T08:00:00",
+      "data": "2026-10-13",
+      "hora": "08:00",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_176",
+      "id_item": "item_5",
+      "id_usuario": "usr_1",
+      "descricao_item": "Glicemia Capilar (HGT)",
+      "dosagem": "Em jejum",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-10-13T07:30:00",
+      "data": "2026-10-13",
+      "hora": "07:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_177",
+      "id_item": "item_4",
+      "id_usuario": "usr_1",
+      "descricao_item": "Aferição de Pressão Arterial",
+      "dosagem": "Sentado em repouso",
+      "tipo_item": "medicao",
+      "horario_previsto": "2026-10-13T08:30:00",
+      "data": "2026-10-13",
+      "hora": "08:30",
+      "critico": true,
+      "status": "concluido"
+    },
+    {
+      "id_agendamento": "ag_178",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Almoço)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-13T12:30:00",
+      "data": "2026-10-13",
+      "hora": "12:30",
+      "critico": true,
+      "status": "atrasado"
+    },
+    {
+      "id_agendamento": "ag_179",
+      "id_item": "item_2",
+      "id_usuario": "usr_1",
+      "descricao_item": "Metformina Cloridrato 850mg (Jantar)",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-13T19:30:00",
+      "data": "2026-10-13",
+      "hora": "19:30",
+      "critico": true,
+      "status": "pendente"
+    },
+    {
+      "id_agendamento": "ag_180",
+      "id_item": "item_3",
+      "id_usuario": "usr_1",
+      "descricao_item": "Anlodipino 5mg",
+      "dosagem": "1 comprimido",
+      "tipo_item": "medicamento",
+      "horario_previsto": "2026-10-13T21:00:00",
+      "data": "2026-10-13",
+      "hora": "21:00",
+      "critico": false,
+      "status": "pendente"
+    }
+  ],
+  "execucoes": [
+    {
+      "id_registro": "exec_1",
+      "id_agendamento": "ag_1",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-14T08:05:00",
+      "status_final": "concluido",
+      "observacao": "Tomado com água pontualmente",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_2",
+      "id_agendamento": "ag_2",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-14T07:32:00",
+      "status_final": "concluido",
+      "observacao": "Medição em jejum",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_3",
+      "id_agendamento": "ag_3",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-14T08:31:00",
+      "status_final": "concluido",
+      "observacao": "Aferido com aparelho de braço digital",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_4",
+      "id_agendamento": "ag_4",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-14T12:40:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após almoço",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_5",
+      "id_agendamento": "ag_5",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-14T19:35:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após jantar",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_6",
+      "id_agendamento": "ag_6",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-14T21:02:00",
+      "status_final": "concluido",
+      "observacao": "Tomado antes de dormir",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_7",
+      "id_agendamento": "ag_7",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-15T08:05:00",
+      "status_final": "concluido",
+      "observacao": "Tomado com água pontualmente",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_8",
+      "id_agendamento": "ag_8",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-15T07:32:00",
+      "status_final": "concluido",
+      "observacao": "Medição em jejum",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_9",
+      "id_agendamento": "ag_9",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-15T08:31:00",
+      "status_final": "concluido",
+      "observacao": "Aferido com aparelho de braço digital",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_10",
+      "id_agendamento": "ag_10",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-15T12:40:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após almoço",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_11",
+      "id_agendamento": "ag_11",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-15T19:35:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após jantar",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_12",
+      "id_agendamento": "ag_12",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-15T21:02:00",
+      "status_final": "concluido",
+      "observacao": "Tomado antes de dormir",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_13",
+      "id_agendamento": "ag_13",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-16T08:05:00",
+      "status_final": "concluido",
+      "observacao": "Tomado com água pontualmente",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_14",
+      "id_agendamento": "ag_14",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-16T07:32:00",
+      "status_final": "concluido",
+      "observacao": "Medição em jejum",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_15",
+      "id_agendamento": "ag_15",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-16T08:31:00",
+      "status_final": "concluido",
+      "observacao": "Aferido com aparelho de braço digital",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_16",
+      "id_agendamento": "ag_16",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-16T12:40:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após almoço",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_17",
+      "id_agendamento": "ag_17",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-16T19:35:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após jantar",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_18",
+      "id_agendamento": "ag_18",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-16T21:02:00",
+      "status_final": "concluido",
+      "observacao": "Tomado antes de dormir",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_19",
+      "id_agendamento": "ag_19",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-17T08:05:00",
+      "status_final": "concluido",
+      "observacao": "Tomado com água pontualmente",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_20",
+      "id_agendamento": "ag_20",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-17T07:32:00",
+      "status_final": "concluido",
+      "observacao": "Medição em jejum",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_21",
+      "id_agendamento": "ag_21",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-17T08:31:00",
+      "status_final": "concluido",
+      "observacao": "Aferido com aparelho de braço digital",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_22",
+      "id_agendamento": "ag_22",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-17T12:40:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após almoço",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_23",
+      "id_agendamento": "ag_23",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-17T19:35:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após jantar",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_24",
+      "id_agendamento": "ag_24",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-17T21:02:00",
+      "status_final": "concluido",
+      "observacao": "Tomado antes de dormir",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_25",
+      "id_agendamento": "ag_25",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-18T08:05:00",
+      "status_final": "concluido",
+      "observacao": "Tomado com água pontualmente",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_26",
+      "id_agendamento": "ag_26",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-18T07:32:00",
+      "status_final": "concluido",
+      "observacao": "Medição em jejum",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_27",
+      "id_agendamento": "ag_27",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-18T08:31:00",
+      "status_final": "concluido",
+      "observacao": "Aferido com aparelho de braço digital",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_28",
+      "id_agendamento": "ag_28",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-18T12:40:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após almoço",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_29",
+      "id_agendamento": "ag_29",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-18T19:35:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após jantar",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_30",
+      "id_agendamento": "ag_30",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-18T21:02:00",
+      "status_final": "concluido",
+      "observacao": "Tomado antes de dormir",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_31",
+      "id_agendamento": "ag_31",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-19T08:05:00",
+      "status_final": "concluido",
+      "observacao": "Tomado com água pontualmente",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_32",
+      "id_agendamento": "ag_32",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-19T07:32:00",
+      "status_final": "concluido",
+      "observacao": "Medição em jejum",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_33",
+      "id_agendamento": "ag_33",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-19T08:31:00",
+      "status_final": "concluido",
+      "observacao": "Aferido com aparelho de braço digital",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_34",
+      "id_agendamento": "ag_34",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-19T12:40:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após almoço",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_35",
+      "id_agendamento": "ag_35",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-19T19:35:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após jantar",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_36",
+      "id_agendamento": "ag_36",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-19T21:02:00",
+      "status_final": "concluido",
+      "observacao": "Tomado antes de dormir",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_37",
+      "id_agendamento": "ag_37",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-20T08:05:00",
+      "status_final": "concluido",
+      "observacao": "Tomado com água pontualmente",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_38",
+      "id_agendamento": "ag_38",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-20T07:32:00",
+      "status_final": "concluido",
+      "observacao": "Medição em jejum",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_39",
+      "id_agendamento": "ag_39",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-20T08:31:00",
+      "status_final": "concluido",
+      "observacao": "Aferido com aparelho de braço digital",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_40",
+      "id_agendamento": "ag_40",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-20T12:40:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após almoço",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_41",
+      "id_agendamento": "ag_41",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-20T19:35:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após jantar",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_42",
+      "id_agendamento": "ag_42",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-20T21:02:00",
+      "status_final": "concluido",
+      "observacao": "Tomado antes de dormir",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_43",
+      "id_agendamento": "ag_43",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-21T08:05:00",
+      "status_final": "concluido",
+      "observacao": "Tomado com água pontualmente",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_44",
+      "id_agendamento": "ag_44",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-21T07:32:00",
+      "status_final": "concluido",
+      "observacao": "Medição em jejum",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_45",
+      "id_agendamento": "ag_45",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-21T08:31:00",
+      "status_final": "concluido",
+      "observacao": "Aferido com aparelho de braço digital",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_46",
+      "id_agendamento": "ag_46",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-21T12:40:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após almoço",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_47",
+      "id_agendamento": "ag_47",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-21T19:35:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após jantar",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_48",
+      "id_agendamento": "ag_48",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-21T21:02:00",
+      "status_final": "concluido",
+      "observacao": "Tomado antes de dormir",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_49",
+      "id_agendamento": "ag_49",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-22T08:05:00",
+      "status_final": "concluido",
+      "observacao": "Tomado com água pontualmente",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_50",
+      "id_agendamento": "ag_50",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-22T07:32:00",
+      "status_final": "concluido",
+      "observacao": "Medição em jejum",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_51",
+      "id_agendamento": "ag_51",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-22T08:31:00",
+      "status_final": "concluido",
+      "observacao": "Aferido com aparelho de braço digital",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_52",
+      "id_agendamento": "ag_52",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-22T12:40:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após almoço",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_53",
+      "id_agendamento": "ag_53",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-22T19:35:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após jantar",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_54",
+      "id_agendamento": "ag_54",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-22T21:02:00",
+      "status_final": "concluido",
+      "observacao": "Tomado antes de dormir",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_55",
+      "id_agendamento": "ag_55",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-23T08:05:00",
+      "status_final": "concluido",
+      "observacao": "Tomado com água pontualmente",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_56",
+      "id_agendamento": "ag_56",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-23T07:32:00",
+      "status_final": "concluido",
+      "observacao": "Medição em jejum",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_57",
+      "id_agendamento": "ag_57",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-23T08:31:00",
+      "status_final": "concluido",
+      "observacao": "Aferido com aparelho de braço digital",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_58",
+      "id_agendamento": "ag_58",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-23T12:40:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após almoço",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_59",
+      "id_agendamento": "ag_59",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-23T19:35:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após jantar",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_60",
+      "id_agendamento": "ag_60",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-23T21:02:00",
+      "status_final": "concluido",
+      "observacao": "Tomado antes de dormir",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_61",
+      "id_agendamento": "ag_61",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-24T08:05:00",
+      "status_final": "concluido",
+      "observacao": "Tomado com água pontualmente",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_62",
+      "id_agendamento": "ag_62",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-24T07:32:00",
+      "status_final": "concluido",
+      "observacao": "Medição em jejum",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_63",
+      "id_agendamento": "ag_63",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-24T08:31:00",
+      "status_final": "concluido",
+      "observacao": "Aferido com aparelho de braço digital",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_64",
+      "id_agendamento": "ag_64",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-24T12:40:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após almoço",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_65",
+      "id_agendamento": "ag_65",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-24T19:35:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após jantar",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_66",
+      "id_agendamento": "ag_66",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-24T21:02:00",
+      "status_final": "concluido",
+      "observacao": "Tomado antes de dormir",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_67",
+      "id_agendamento": "ag_67",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-25T08:05:00",
+      "status_final": "concluido",
+      "observacao": "Tomado com água pontualmente",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_68",
+      "id_agendamento": "ag_68",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-25T07:32:00",
+      "status_final": "concluido",
+      "observacao": "Medição em jejum",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_69",
+      "id_agendamento": "ag_69",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-25T08:31:00",
+      "status_final": "concluido",
+      "observacao": "Aferido com aparelho de braço digital",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_70",
+      "id_agendamento": "ag_70",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-25T12:40:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após almoço",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_71",
+      "id_agendamento": "ag_71",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-25T19:35:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após jantar",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_72",
+      "id_agendamento": "ag_72",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-25T21:02:00",
+      "status_final": "concluido",
+      "observacao": "Tomado antes de dormir",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_73",
+      "id_agendamento": "ag_73",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-26T08:05:00",
+      "status_final": "concluido",
+      "observacao": "Tomado com água pontualmente",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_74",
+      "id_agendamento": "ag_74",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-26T07:32:00",
+      "status_final": "concluido",
+      "observacao": "Medição em jejum",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_75",
+      "id_agendamento": "ag_75",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-26T08:31:00",
+      "status_final": "concluido",
+      "observacao": "Aferido com aparelho de braço digital",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_76",
+      "id_agendamento": "ag_76",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-26T12:40:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após almoço",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_77",
+      "id_agendamento": "ag_77",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-26T19:35:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após jantar",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_78",
+      "id_agendamento": "ag_78",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-26T21:02:00",
+      "status_final": "concluido",
+      "observacao": "Tomado antes de dormir",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_79",
+      "id_agendamento": "ag_79",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-27T08:05:00",
+      "status_final": "concluido",
+      "observacao": "Tomado com água pontualmente",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_80",
+      "id_agendamento": "ag_80",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-27T07:32:00",
+      "status_final": "concluido",
+      "observacao": "Medição em jejum",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_81",
+      "id_agendamento": "ag_81",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-27T08:31:00",
+      "status_final": "concluido",
+      "observacao": "Aferido com aparelho de braço digital",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_82",
+      "id_agendamento": "ag_82",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-27T12:40:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após almoço",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_83",
+      "id_agendamento": "ag_83",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-27T19:35:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após jantar",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_84",
+      "id_agendamento": "ag_84",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-27T21:02:00",
+      "status_final": "concluido",
+      "observacao": "Tomado antes de dormir",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_85",
+      "id_agendamento": "ag_85",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-28T08:05:00",
+      "status_final": "concluido",
+      "observacao": "Tomado com água pontualmente",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_86",
+      "id_agendamento": "ag_86",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-28T07:32:00",
+      "status_final": "concluido",
+      "observacao": "Medição em jejum",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_87",
+      "id_agendamento": "ag_87",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-28T08:31:00",
+      "status_final": "concluido",
+      "observacao": "Aferido com aparelho de braço digital",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_88",
+      "id_agendamento": "ag_88",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-28T12:40:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após almoço",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_89",
+      "id_agendamento": "ag_89",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-28T19:35:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após jantar",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_90",
+      "id_agendamento": "ag_90",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-28T21:02:00",
+      "status_final": "concluido",
+      "observacao": "Tomado antes de dormir",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_91",
+      "id_agendamento": "ag_91",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-29T08:05:00",
+      "status_final": "concluido",
+      "observacao": "Tomado com água pontualmente",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_92",
+      "id_agendamento": "ag_92",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-29T07:32:00",
+      "status_final": "concluido",
+      "observacao": "Medição em jejum",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_93",
+      "id_agendamento": "ag_93",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-29T08:31:00",
+      "status_final": "concluido",
+      "observacao": "Aferido com aparelho de braço digital",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_94",
+      "id_agendamento": "ag_94",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-29T12:40:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após almoço",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_95",
+      "id_agendamento": "ag_95",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-29T19:35:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após jantar",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_96",
+      "id_agendamento": "ag_96",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-29T21:02:00",
+      "status_final": "concluido",
+      "observacao": "Tomado antes de dormir",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_97",
+      "id_agendamento": "ag_97",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-30T08:05:00",
+      "status_final": "concluido",
+      "observacao": "Tomado com água pontualmente",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_98",
+      "id_agendamento": "ag_98",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-30T07:32:00",
+      "status_final": "concluido",
+      "observacao": "Medição em jejum",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_99",
+      "id_agendamento": "ag_99",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-30T08:31:00",
+      "status_final": "concluido",
+      "observacao": "Aferido com aparelho de braço digital",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_100",
+      "id_agendamento": "ag_100",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-30T12:40:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após almoço",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_101",
+      "id_agendamento": "ag_101",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-30T19:35:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após jantar",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_102",
+      "id_agendamento": "ag_102",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-09-30T21:02:00",
+      "status_final": "concluido",
+      "observacao": "Tomado antes de dormir",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_103",
+      "id_agendamento": "ag_103",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-01T08:05:00",
+      "status_final": "justificado",
+      "observacao": "Paciente sentiu tontura leve e aguardou aferição médica",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_104",
+      "id_agendamento": "ag_104",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-01T07:32:00",
+      "status_final": "concluido",
+      "observacao": "Medição em jejum",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_105",
+      "id_agendamento": "ag_105",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-01T08:31:00",
+      "status_final": "concluido",
+      "observacao": "Aferido com aparelho de braço digital",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_106",
+      "id_agendamento": "ag_106",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-01T12:40:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após almoço",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_107",
+      "id_agendamento": "ag_107",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-01T19:35:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após jantar",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_108",
+      "id_agendamento": "ag_108",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-01T21:02:00",
+      "status_final": "concluido",
+      "observacao": "Tomado antes de dormir",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_109",
+      "id_agendamento": "ag_109",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-02T08:05:00",
+      "status_final": "concluido",
+      "observacao": "Tomado com água pontualmente",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_110",
+      "id_agendamento": "ag_110",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-02T07:32:00",
+      "status_final": "concluido",
+      "observacao": "Medição em jejum",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_111",
+      "id_agendamento": "ag_111",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-02T08:31:00",
+      "status_final": "concluido",
+      "observacao": "Aferido com aparelho de braço digital",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_112",
+      "id_agendamento": "ag_112",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-02T12:40:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após almoço",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_113",
+      "id_agendamento": "ag_113",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-02T19:35:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após jantar",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_114",
+      "id_agendamento": "ag_114",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-02T21:02:00",
+      "status_final": "concluido",
+      "observacao": "Tomado antes de dormir",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_115",
+      "id_agendamento": "ag_115",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-03T08:05:00",
+      "status_final": "concluido",
+      "observacao": "Tomado com água pontualmente",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_116",
+      "id_agendamento": "ag_116",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-03T07:32:00",
+      "status_final": "concluido",
+      "observacao": "Medição em jejum",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_117",
+      "id_agendamento": "ag_117",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-03T08:31:00",
+      "status_final": "concluido",
+      "observacao": "Aferido com aparelho de braço digital",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_118",
+      "id_agendamento": "ag_118",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-03T12:40:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após almoço",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_119",
+      "id_agendamento": "ag_119",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-03T19:35:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após jantar",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_120",
+      "id_agendamento": "ag_120",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-03T21:02:00",
+      "status_final": "concluido",
+      "observacao": "Tomado antes de dormir",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_121",
+      "id_agendamento": "ag_121",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-04T08:05:00",
+      "status_final": "concluido",
+      "observacao": "Tomado com água pontualmente",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_122",
+      "id_agendamento": "ag_122",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-04T07:32:00",
+      "status_final": "concluido",
+      "observacao": "Medição em jejum",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_123",
+      "id_agendamento": "ag_123",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-04T08:31:00",
+      "status_final": "concluido",
+      "observacao": "Aferido com aparelho de braço digital",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_124",
+      "id_agendamento": "ag_124",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-04T12:40:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após almoço",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_125",
+      "id_agendamento": "ag_125",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-04T19:35:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após jantar",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_126",
+      "id_agendamento": "ag_126",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-04T21:02:00",
+      "status_final": "concluido",
+      "observacao": "Tomado antes de dormir",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_127",
+      "id_agendamento": "ag_127",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-05T08:05:00",
+      "status_final": "concluido",
+      "observacao": "Tomado com água pontualmente",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_128",
+      "id_agendamento": "ag_128",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-05T07:32:00",
+      "status_final": "concluido",
+      "observacao": "Medição em jejum",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_129",
+      "id_agendamento": "ag_129",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-05T08:31:00",
+      "status_final": "concluido",
+      "observacao": "Aferido com aparelho de braço digital",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_130",
+      "id_agendamento": "ag_130",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-05T12:40:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após almoço",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_131",
+      "id_agendamento": "ag_131",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-05T19:35:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após jantar",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_132",
+      "id_agendamento": "ag_132",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-05T21:02:00",
+      "status_final": "concluido",
+      "observacao": "Tomado antes de dormir",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_133",
+      "id_agendamento": "ag_133",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-06T08:05:00",
+      "status_final": "concluido",
+      "observacao": "Tomado com água pontualmente",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_134",
+      "id_agendamento": "ag_134",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-06T07:32:00",
+      "status_final": "concluido",
+      "observacao": "Medição em jejum",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_135",
+      "id_agendamento": "ag_135",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-06T08:31:00",
+      "status_final": "concluido",
+      "observacao": "Aferido com aparelho de braço digital",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_136",
+      "id_agendamento": "ag_136",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-06T12:40:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após almoço",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_137",
+      "id_agendamento": "ag_137",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-06T19:35:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após jantar",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_138",
+      "id_agendamento": "ag_138",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-06T21:02:00",
+      "status_final": "concluido",
+      "observacao": "Tomado antes de dormir",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_139",
+      "id_agendamento": "ag_139",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-07T08:05:00",
+      "status_final": "concluido",
+      "observacao": "Tomado com água pontualmente",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_140",
+      "id_agendamento": "ag_140",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-07T07:32:00",
+      "status_final": "concluido",
+      "observacao": "Medição em jejum",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_141",
+      "id_agendamento": "ag_141",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-07T08:31:00",
+      "status_final": "concluido",
+      "observacao": "Aferido com aparelho de braço digital",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_142",
+      "id_agendamento": "ag_142",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-07T12:40:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após almoço",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_143",
+      "id_agendamento": "ag_143",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-07T19:35:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após jantar",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_144",
+      "id_agendamento": "ag_144",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-07T21:02:00",
+      "status_final": "concluido",
+      "observacao": "Tomado antes de dormir",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_145",
+      "id_agendamento": "ag_145",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-08T08:05:00",
+      "status_final": "concluido",
+      "observacao": "Tomado com água pontualmente",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_146",
+      "id_agendamento": "ag_146",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-08T07:32:00",
+      "status_final": "concluido",
+      "observacao": "Medição em jejum",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_147",
+      "id_agendamento": "ag_147",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-08T08:31:00",
+      "status_final": "concluido",
+      "observacao": "Aferido com aparelho de braço digital",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_148",
+      "id_agendamento": "ag_148",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-08T12:40:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após almoço",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_149",
+      "id_agendamento": "ag_149",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-08T19:35:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após jantar",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_150",
+      "id_agendamento": "ag_150",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-08T21:02:00",
+      "status_final": "concluido",
+      "observacao": "Tomado antes de dormir",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_151",
+      "id_agendamento": "ag_151",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-09T08:05:00",
+      "status_final": "concluido",
+      "observacao": "Tomado com água pontualmente",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_152",
+      "id_agendamento": "ag_152",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-09T07:32:00",
+      "status_final": "concluido",
+      "observacao": "Medição em jejum",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_153",
+      "id_agendamento": "ag_153",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-09T08:31:00",
+      "status_final": "concluido",
+      "observacao": "Aferido com aparelho de braço digital",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_154",
+      "id_agendamento": "ag_154",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-09T12:40:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após almoço",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_155",
+      "id_agendamento": "ag_155",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-09T19:35:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após jantar",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_156",
+      "id_agendamento": "ag_156",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-09T21:02:00",
+      "status_final": "concluido",
+      "observacao": "Tomado antes de dormir",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_157",
+      "id_agendamento": "ag_157",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-10T08:05:00",
+      "status_final": "justificado",
+      "observacao": "Falta do medicamento na farmácia do posto; Micael foi buscar à tarde",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_158",
+      "id_agendamento": "ag_158",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-10T07:32:00",
+      "status_final": "concluido",
+      "observacao": "Medição em jejum",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_159",
+      "id_agendamento": "ag_159",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-10T08:31:00",
+      "status_final": "concluido",
+      "observacao": "Aferido com aparelho de braço digital",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_160",
+      "id_agendamento": "ag_160",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-10T12:40:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após almoço",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_161",
+      "id_agendamento": "ag_161",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-10T19:35:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após jantar",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_162",
+      "id_agendamento": "ag_162",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-10T21:02:00",
+      "status_final": "concluido",
+      "observacao": "Tomado antes de dormir",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_163",
+      "id_agendamento": "ag_163",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-11T08:05:00",
+      "status_final": "concluido",
+      "observacao": "Tomado com água pontualmente",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_164",
+      "id_agendamento": "ag_164",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-11T07:32:00",
+      "status_final": "concluido",
+      "observacao": "Medição em jejum",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_165",
+      "id_agendamento": "ag_165",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-11T08:31:00",
+      "status_final": "concluido",
+      "observacao": "Aferido com aparelho de braço digital",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_166",
+      "id_agendamento": "ag_166",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-11T12:40:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após almoço",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_167",
+      "id_agendamento": "ag_167",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-11T19:35:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após jantar",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_168",
+      "id_agendamento": "ag_168",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-11T21:02:00",
+      "status_final": "concluido",
+      "observacao": "Tomado antes de dormir",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_169",
+      "id_agendamento": "ag_169",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-12T08:05:00",
+      "status_final": "concluido",
+      "observacao": "Tomado com água pontualmente",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_170",
+      "id_agendamento": "ag_170",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-12T07:32:00",
+      "status_final": "concluido",
+      "observacao": "Medição em jejum",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_171",
+      "id_agendamento": "ag_171",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-12T08:31:00",
+      "status_final": "concluido",
+      "observacao": "Aferido com aparelho de braço digital",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_172",
+      "id_agendamento": "ag_172",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-12T12:40:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após almoço",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_173",
+      "id_agendamento": "ag_173",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-12T19:35:00",
+      "status_final": "concluido",
+      "observacao": "Tomado após jantar",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_174",
+      "id_agendamento": "ag_174",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-12T21:02:00",
+      "status_final": "concluido",
+      "observacao": "Tomado antes de dormir",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_175",
+      "id_agendamento": "ag_175",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-13T08:05:00",
+      "status_final": "concluido",
+      "observacao": "Tomado com água pontualmente",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_176",
+      "id_agendamento": "ag_176",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-13T07:32:00",
+      "status_final": "concluido",
+      "observacao": "Medição em jejum",
+      "confirmado_por": "paciente"
+    },
+    {
+      "id_registro": "exec_177",
+      "id_agendamento": "ag_177",
+      "id_usuario": "usr_1",
+      "horario_realizado": "2026-10-13T08:31:00",
+      "status_final": "concluido",
+      "observacao": "Aferido com aparelho de braço digital",
+      "confirmado_por": "paciente"
+    }
+  ],
+  "medicoes": [
+    {
+      "id_medicao": "med_1",
+      "id_usuario": "usr_1",
+      "tipo": "glicemia",
+      "valor": {
+        "valor_mg_dl": 93,
+        "tipo": "jejum"
+      },
+      "data_hora": "2026-09-14T07:32:00",
+      "observacao": "Dentro da meta terapêutica"
+    },
+    {
+      "id_medicao": "med_2",
+      "id_usuario": "usr_1",
+      "tipo": "pressao",
+      "valor": {
+        "sistolica": 117,
+        "diastolica": 78,
+        "pulso": 68
+      },
+      "data_hora": "2026-09-14T08:31:00",
+      "observacao": "Pressão arterial controlada"
+    },
+    {
+      "id_medicao": "med_3",
+      "id_usuario": "usr_1",
+      "tipo": "glicemia",
+      "valor": {
+        "valor_mg_dl": 109,
+        "tipo": "jejum"
+      },
+      "data_hora": "2026-09-15T07:32:00",
+      "observacao": "Dentro da meta terapêutica"
+    },
+    {
+      "id_medicao": "med_4",
+      "id_usuario": "usr_1",
+      "tipo": "pressao",
+      "valor": {
+        "sistolica": 115,
+        "diastolica": 83,
+        "pulso": 73
+      },
+      "data_hora": "2026-09-15T08:31:00",
+      "observacao": "Pressão arterial controlada"
+    },
+    {
+      "id_medicao": "med_5",
+      "id_usuario": "usr_1",
+      "tipo": "glicemia",
+      "valor": {
+        "valor_mg_dl": 122,
+        "tipo": "jejum"
+      },
+      "data_hora": "2026-09-16T07:32:00",
+      "observacao": "Dentro da meta terapêutica"
+    },
+    {
+      "id_medicao": "med_6",
+      "id_usuario": "usr_1",
+      "tipo": "pressao",
+      "valor": {
+        "sistolica": 122,
+        "diastolica": 87,
+        "pulso": 76
+      },
+      "data_hora": "2026-09-16T08:31:00",
+      "observacao": "Pressão arterial controlada"
+    },
+    {
+      "id_medicao": "med_7",
+      "id_usuario": "usr_1",
+      "tipo": "glicemia",
+      "valor": {
+        "valor_mg_dl": 118,
+        "tipo": "jejum"
+      },
+      "data_hora": "2026-09-17T07:32:00",
+      "observacao": "Dentro da meta terapêutica"
+    },
+    {
+      "id_medicao": "med_8",
+      "id_usuario": "usr_1",
+      "tipo": "pressao",
+      "valor": {
+        "sistolica": 131,
+        "diastolica": 86,
+        "pulso": 75
+      },
+      "data_hora": "2026-09-17T08:31:00",
+      "observacao": "Pressão arterial controlada"
+    },
+    {
+      "id_medicao": "med_9",
+      "id_usuario": "usr_1",
+      "tipo": "glicemia",
+      "valor": {
+        "valor_mg_dl": 102,
+        "tipo": "jejum"
+      },
+      "data_hora": "2026-09-18T07:32:00",
+      "observacao": "Dentro da meta terapêutica"
+    },
+    {
+      "id_medicao": "med_10",
+      "id_usuario": "usr_1",
+      "tipo": "pressao",
+      "valor": {
+        "sistolica": 134,
+        "diastolica": 81,
+        "pulso": 71
+      },
+      "data_hora": "2026-09-18T08:31:00",
+      "observacao": "Pressão arterial controlada"
+    },
+    {
+      "id_medicao": "med_11",
+      "id_usuario": "usr_1",
+      "tipo": "glicemia",
+      "valor": {
+        "valor_mg_dl": 88,
+        "tipo": "jejum"
+      },
+      "data_hora": "2026-09-19T07:32:00",
+      "observacao": "Dentro da meta terapêutica"
+    },
+    {
+      "id_medicao": "med_12",
+      "id_usuario": "usr_1",
+      "tipo": "pressao",
+      "valor": {
+        "sistolica": 129,
+        "diastolica": 76,
+        "pulso": 67
+      },
+      "data_hora": "2026-09-19T08:31:00",
+      "observacao": "Pressão arterial controlada"
+    },
+    {
+      "id_medicao": "med_13",
+      "id_usuario": "usr_1",
+      "tipo": "glicemia",
+      "valor": {
+        "valor_mg_dl": 89,
+        "tipo": "jejum"
+      },
+      "data_hora": "2026-09-20T07:32:00",
+      "observacao": "Dentro da meta terapêutica"
+    },
+    {
+      "id_medicao": "med_14",
+      "id_usuario": "usr_1",
+      "tipo": "pressao",
+      "valor": {
+        "sistolica": 119,
+        "diastolica": 76,
+        "pulso": 67
+      },
+      "data_hora": "2026-09-20T08:31:00",
+      "observacao": "Pressão arterial controlada"
+    },
+    {
+      "id_medicao": "med_15",
+      "id_usuario": "usr_1",
+      "tipo": "glicemia",
+      "valor": {
+        "valor_mg_dl": 104,
+        "tipo": "jejum"
+      },
+      "data_hora": "2026-09-21T07:32:00",
+      "observacao": "Dentro da meta terapêutica"
+    },
+    {
+      "id_medicao": "med_16",
+      "id_usuario": "usr_1",
+      "tipo": "pressao",
+      "valor": {
+        "sistolica": 115,
+        "diastolica": 81,
+        "pulso": 71
+      },
+      "data_hora": "2026-09-21T08:31:00",
+      "observacao": "Pressão arterial controlada"
+    },
+    {
+      "id_medicao": "med_17",
+      "id_usuario": "usr_1",
+      "tipo": "glicemia",
+      "valor": {
+        "valor_mg_dl": 120,
+        "tipo": "jejum"
+      },
+      "data_hora": "2026-09-22T07:32:00",
+      "observacao": "Dentro da meta terapêutica"
+    },
+    {
+      "id_medicao": "med_18",
+      "id_usuario": "usr_1",
+      "tipo": "pressao",
+      "valor": {
+        "sistolica": 119,
+        "diastolica": 87,
+        "pulso": 76
+      },
+      "data_hora": "2026-09-22T08:31:00",
+      "observacao": "Pressão arterial controlada"
+    },
+    {
+      "id_medicao": "med_19",
+      "id_usuario": "usr_1",
+      "tipo": "glicemia",
+      "valor": {
+        "valor_mg_dl": 121,
+        "tipo": "jejum"
+      },
+      "data_hora": "2026-09-23T07:32:00",
+      "observacao": "Dentro da meta terapêutica"
+    },
+    {
+      "id_medicao": "med_20",
+      "id_usuario": "usr_1",
+      "tipo": "pressao",
+      "valor": {
+        "sistolica": 129,
+        "diastolica": 87,
+        "pulso": 76
+      },
+      "data_hora": "2026-09-23T08:31:00",
+      "observacao": "Pressão arterial controlada"
+    },
+    {
+      "id_medicao": "med_21",
+      "id_usuario": "usr_1",
+      "tipo": "glicemia",
+      "valor": {
+        "valor_mg_dl": 107,
+        "tipo": "jejum"
+      },
+      "data_hora": "2026-09-24T07:32:00",
+      "observacao": "Dentro da meta terapêutica"
+    },
+    {
+      "id_medicao": "med_22",
+      "id_usuario": "usr_1",
+      "tipo": "pressao",
+      "valor": {
+        "sistolica": 134,
+        "diastolica": 82,
+        "pulso": 72
+      },
+      "data_hora": "2026-09-24T08:31:00",
+      "observacao": "Pressão arterial controlada"
+    },
+    {
+      "id_medicao": "med_23",
+      "id_usuario": "usr_1",
+      "tipo": "glicemia",
+      "valor": {
+        "valor_mg_dl": 91,
+        "tipo": "jejum"
+      },
+      "data_hora": "2026-09-25T07:32:00",
+      "observacao": "Dentro da meta terapêutica"
+    },
+    {
+      "id_medicao": "med_24",
+      "id_usuario": "usr_1",
+      "tipo": "pressao",
+      "valor": {
+        "sistolica": 131,
+        "diastolica": 77,
+        "pulso": 68
+      },
+      "data_hora": "2026-09-25T08:31:00",
+      "observacao": "Pressão arterial controlada"
+    },
+    {
+      "id_medicao": "med_25",
+      "id_usuario": "usr_1",
+      "tipo": "glicemia",
+      "valor": {
+        "valor_mg_dl": 87,
+        "tipo": "jejum"
+      },
+      "data_hora": "2026-09-26T07:32:00",
+      "observacao": "Dentro da meta terapêutica"
+    },
+    {
+      "id_medicao": "med_26",
+      "id_usuario": "usr_1",
+      "tipo": "pressao",
+      "valor": {
+        "sistolica": 122,
+        "diastolica": 76,
+        "pulso": 67
+      },
+      "data_hora": "2026-09-26T08:31:00",
+      "observacao": "Pressão arterial controlada"
+    },
+    {
+      "id_medicao": "med_27",
+      "id_usuario": "usr_1",
+      "tipo": "glicemia",
+      "valor": {
+        "valor_mg_dl": 99,
+        "tipo": "jejum"
+      },
+      "data_hora": "2026-09-27T07:32:00",
+      "observacao": "Dentro da meta terapêutica"
+    },
+    {
+      "id_medicao": "med_28",
+      "id_usuario": "usr_1",
+      "tipo": "pressao",
+      "valor": {
+        "sistolica": 115,
+        "diastolica": 80,
+        "pulso": 70
+      },
+      "data_hora": "2026-09-27T08:31:00",
+      "observacao": "Pressão arterial controlada"
+    },
+    {
+      "id_medicao": "med_29",
+      "id_usuario": "usr_1",
+      "tipo": "glicemia",
+      "valor": {
+        "valor_mg_dl": 116,
+        "tipo": "jejum"
+      },
+      "data_hora": "2026-09-28T07:32:00",
+      "observacao": "Dentro da meta terapêutica"
+    },
+    {
+      "id_medicao": "med_30",
+      "id_usuario": "usr_1",
+      "tipo": "pressao",
+      "valor": {
+        "sistolica": 117,
+        "diastolica": 85,
+        "pulso": 75
+      },
+      "data_hora": "2026-09-28T08:31:00",
+      "observacao": "Pressão arterial controlada"
+    },
+    {
+      "id_medicao": "med_31",
+      "id_usuario": "usr_1",
+      "tipo": "glicemia",
+      "valor": {
+        "valor_mg_dl": 122,
+        "tipo": "jejum"
+      },
+      "data_hora": "2026-09-29T07:32:00",
+      "observacao": "Dentro da meta terapêutica"
+    },
+    {
+      "id_medicao": "med_32",
+      "id_usuario": "usr_1",
+      "tipo": "pressao",
+      "valor": {
+        "sistolica": 126,
+        "diastolica": 87,
+        "pulso": 76
+      },
+      "data_hora": "2026-09-29T08:31:00",
+      "observacao": "Pressão arterial controlada"
+    },
+    {
+      "id_medicao": "med_33",
+      "id_usuario": "usr_1",
+      "tipo": "glicemia",
+      "valor": {
+        "valor_mg_dl": 112,
+        "tipo": "jejum"
+      },
+      "data_hora": "2026-09-30T07:32:00",
+      "observacao": "Dentro da meta terapêutica"
+    },
+    {
+      "id_medicao": "med_34",
+      "id_usuario": "usr_1",
+      "tipo": "pressao",
+      "valor": {
+        "sistolica": 134,
+        "diastolica": 84,
+        "pulso": 74
+      },
+      "data_hora": "2026-09-30T08:31:00",
+      "observacao": "Pressão arterial controlada"
+    },
+    {
+      "id_medicao": "med_35",
+      "id_usuario": "usr_1",
+      "tipo": "glicemia",
+      "valor": {
+        "valor_mg_dl": 95,
+        "tipo": "jejum"
+      },
+      "data_hora": "2026-10-01T07:32:00",
+      "observacao": "Dentro da meta terapêutica"
+    },
+    {
+      "id_medicao": "med_36",
+      "id_usuario": "usr_1",
+      "tipo": "pressao",
+      "valor": {
+        "sistolica": 155,
+        "diastolica": 88,
+        "pulso": 69
+      },
+      "data_hora": "2026-10-01T08:31:00",
+      "observacao": "Pressão acima da meta clínica"
+    },
+    {
+      "id_medicao": "med_37",
+      "id_usuario": "usr_1",
+      "tipo": "glicemia",
+      "valor": {
+        "valor_mg_dl": 87,
+        "tipo": "jejum"
+      },
+      "data_hora": "2026-10-02T07:32:00",
+      "observacao": "Dentro da meta terapêutica"
+    },
+    {
+      "id_medicao": "med_38",
+      "id_usuario": "usr_1",
+      "tipo": "pressao",
+      "valor": {
+        "sistolica": 125,
+        "diastolica": 76,
+        "pulso": 67
+      },
+      "data_hora": "2026-10-02T08:31:00",
+      "observacao": "Pressão arterial controlada"
+    },
+    {
+      "id_medicao": "med_39",
+      "id_usuario": "usr_1",
+      "tipo": "glicemia",
+      "valor": {
+        "valor_mg_dl": 95,
+        "tipo": "jejum"
+      },
+      "data_hora": "2026-10-03T07:32:00",
+      "observacao": "Dentro da meta terapêutica"
+    },
+    {
+      "id_medicao": "med_40",
+      "id_usuario": "usr_1",
+      "tipo": "pressao",
+      "valor": {
+        "sistolica": 116,
+        "diastolica": 78,
+        "pulso": 69
+      },
+      "data_hora": "2026-10-03T08:31:00",
+      "observacao": "Pressão arterial controlada"
+    },
+    {
+      "id_medicao": "med_41",
+      "id_usuario": "usr_1",
+      "tipo": "glicemia",
+      "valor": {
+        "valor_mg_dl": 112,
+        "tipo": "jejum"
+      },
+      "data_hora": "2026-10-04T07:32:00",
+      "observacao": "Dentro da meta terapêutica"
+    },
+    {
+      "id_medicao": "med_42",
+      "id_usuario": "usr_1",
+      "tipo": "pressao",
+      "valor": {
+        "sistolica": 115,
+        "diastolica": 84,
+        "pulso": 74
+      },
+      "data_hora": "2026-10-04T08:31:00",
+      "observacao": "Pressão arterial controlada"
+    },
+    {
+      "id_medicao": "med_43",
+      "id_usuario": "usr_1",
+      "tipo": "glicemia",
+      "valor": {
+        "valor_mg_dl": 122,
+        "tipo": "jejum"
+      },
+      "data_hora": "2026-10-05T07:32:00",
+      "observacao": "Dentro da meta terapêutica"
+    },
+    {
+      "id_medicao": "med_44",
+      "id_usuario": "usr_1",
+      "tipo": "pressao",
+      "valor": {
+        "sistolica": 123,
+        "diastolica": 87,
+        "pulso": 76
+      },
+      "data_hora": "2026-10-05T08:31:00",
+      "observacao": "Pressão arterial controlada"
+    },
+    {
+      "id_medicao": "med_45",
+      "id_usuario": "usr_1",
+      "tipo": "glicemia",
+      "valor": {
+        "valor_mg_dl": 116,
+        "tipo": "jejum"
+      },
+      "data_hora": "2026-10-06T07:32:00",
+      "observacao": "Dentro da meta terapêutica"
+    },
+    {
+      "id_medicao": "med_46",
+      "id_usuario": "usr_1",
+      "tipo": "pressao",
+      "valor": {
+        "sistolica": 132,
+        "diastolica": 85,
+        "pulso": 75
+      },
+      "data_hora": "2026-10-06T08:31:00",
+      "observacao": "Pressão arterial controlada"
+    },
+    {
+      "id_medicao": "med_47",
+      "id_usuario": "usr_1",
+      "tipo": "glicemia",
+      "valor": {
+        "valor_mg_dl": 99,
+        "tipo": "jejum"
+      },
+      "data_hora": "2026-10-07T07:32:00",
+      "observacao": "Dentro da meta terapêutica"
+    },
+    {
+      "id_medicao": "med_48",
+      "id_usuario": "usr_1",
+      "tipo": "pressao",
+      "valor": {
+        "sistolica": 134,
+        "diastolica": 80,
+        "pulso": 70
+      },
+      "data_hora": "2026-10-07T08:31:00",
+      "observacao": "Pressão arterial controlada"
+    },
+    {
+      "id_medicao": "med_49",
+      "id_usuario": "usr_1",
+      "tipo": "glicemia",
+      "valor": {
+        "valor_mg_dl": 87,
+        "tipo": "jejum"
+      },
+      "data_hora": "2026-10-08T07:32:00",
+      "observacao": "Dentro da meta terapêutica"
+    },
+    {
+      "id_medicao": "med_50",
+      "id_usuario": "usr_1",
+      "tipo": "pressao",
+      "valor": {
+        "sistolica": 127,
+        "diastolica": 76,
+        "pulso": 67
+      },
+      "data_hora": "2026-10-08T08:31:00",
+      "observacao": "Pressão arterial controlada"
+    },
+    {
+      "id_medicao": "med_51",
+      "id_usuario": "usr_1",
+      "tipo": "glicemia",
+      "valor": {
+        "valor_mg_dl": 91,
+        "tipo": "jejum"
+      },
+      "data_hora": "2026-10-09T07:32:00",
+      "observacao": "Dentro da meta terapêutica"
+    },
+    {
+      "id_medicao": "med_52",
+      "id_usuario": "usr_1",
+      "tipo": "pressao",
+      "valor": {
+        "sistolica": 118,
+        "diastolica": 77,
+        "pulso": 68
+      },
+      "data_hora": "2026-10-09T08:31:00",
+      "observacao": "Pressão arterial controlada"
+    },
+    {
+      "id_medicao": "med_53",
+      "id_usuario": "usr_1",
+      "tipo": "glicemia",
+      "valor": {
+        "valor_mg_dl": 142,
+        "tipo": "jejum"
+      },
+      "data_hora": "2026-10-10T07:32:00",
+      "observacao": "Leve elevação matinal"
+    },
+    {
+      "id_medicao": "med_54",
+      "id_usuario": "usr_1",
+      "tipo": "pressao",
+      "valor": {
+        "sistolica": 137,
+        "diastolica": 92,
+        "pulso": 72
+      },
+      "data_hora": "2026-10-10T08:31:00",
+      "observacao": "Pressão arterial controlada"
+    },
+    {
+      "id_medicao": "med_55",
+      "id_usuario": "usr_1",
+      "tipo": "glicemia",
+      "valor": {
+        "valor_mg_dl": 121,
+        "tipo": "jejum"
+      },
+      "data_hora": "2026-10-11T07:32:00",
+      "observacao": "Dentro da meta terapêutica"
+    },
+    {
+      "id_medicao": "med_56",
+      "id_usuario": "usr_1",
+      "tipo": "pressao",
+      "valor": {
+        "sistolica": 120,
+        "diastolica": 87,
+        "pulso": 76
+      },
+      "data_hora": "2026-10-11T08:31:00",
+      "observacao": "Pressão arterial controlada"
+    },
+    {
+      "id_medicao": "med_57",
+      "id_usuario": "usr_1",
+      "tipo": "glicemia",
+      "valor": {
+        "valor_mg_dl": 120,
+        "tipo": "jejum"
+      },
+      "data_hora": "2026-10-12T07:32:00",
+      "observacao": "Dentro da meta terapêutica"
+    },
+    {
+      "id_medicao": "med_58",
+      "id_usuario": "usr_1",
+      "tipo": "pressao",
+      "valor": {
+        "sistolica": 130,
+        "diastolica": 87,
+        "pulso": 76
+      },
+      "data_hora": "2026-10-12T08:31:00",
+      "observacao": "Pressão arterial controlada"
+    },
+    {
+      "id_medicao": "med_59",
+      "id_usuario": "usr_1",
+      "tipo": "glicemia",
+      "valor": {
+        "valor_mg_dl": 105,
+        "tipo": "jejum"
+      },
+      "data_hora": "2026-10-13T07:32:00",
+      "observacao": "Dentro da meta terapêutica"
+    },
+    {
+      "id_medicao": "med_60",
+      "id_usuario": "usr_1",
+      "tipo": "pressao",
+      "valor": {
+        "sistolica": 135,
+        "diastolica": 82,
+        "pulso": 72
+      },
+      "data_hora": "2026-10-13T08:31:00",
+      "observacao": "Pressão arterial controlada"
+    }
+  ],
+  "notificacoes": [
+    {
+      "id_notificacao": "notif_1791924130288_967",
+      "lida": false,
+      "id_destinatario": "usr_2",
+      "tipo": "alerta_critico",
+      "titulo": "⏰ Dose Atrasada!",
+      "mensagem": "A medicação \"Metformina Cloridrato 850mg (Almoço)\" prevista para às 12:30 ainda não foi confirmada.",
+      "horario": "2026-10-13T20:42:10.288Z"
+    },
+    {
+      "id_notificacao": "notif_1",
+      "id_destinatario": "usr_2",
+      "tipo": "sucesso",
+      "titulo": "Medicação confirmada",
+      "mensagem": "Seu Antenor confirmou o uso de Losartana 50mg pontualmente hoje.",
+      "horario": "2026-10-13T08:05:00",
+      "lida": false
+    },
+    {
+      "id_notificacao": "notif_2",
+      "id_destinatario": "usr_2",
+      "tipo": "lembrete",
+      "titulo": "Próxima dose agendada",
+      "mensagem": "Próxima medicação: Metformina 850mg às 12:30.",
+      "horario": "2026-10-13T11:00:00",
+      "lida": false
+    }
+  ],
+  "lgpd_logs": [
+    {
+      "id_log": "log_1792528141917",
+      "data_hora": "2026-10-20T20:29:01.918Z",
+      "acao": "LOGIN_ACESSO",
+      "id_usuario": "usr_1",
+      "detalhes": "Autenticação bem-sucedida para antenor@cuidarmais.com.br."
+    }
+  ]
+}

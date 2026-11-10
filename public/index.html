@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cuidar+ | Assistente Inteligente para Acompanhamento de Tratamentos</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- jsPDF & html2canvas for 1-Click PDF Generation (CA03) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-size-normal antialiased selection:bg-emerald-500 selection:text-white">
+
+  <!-- ========================================================================= -->
+  <!-- BARRA DE STATUS SUPERIOR (Cotações / Conexão em Tempo Real / Atalhos)     -->
+  <!-- ========================================================================= -->
+  <div class="bg-slate-950 border-b border-slate-800 text-xs py-2 px-4 sm:px-6">
+    <div class="max-w-7xl mx-auto flex items-center justify-between flex-wrap gap-2">
+      <div class="flex items-center space-x-3 text-slate-400">
+        <span class="inline-flex items-center space-x-1.5 font-bold text-emerald-400">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>SISTEMA ATIVO: CUIDAR+ 2.4</span>
+        </span>
+        <span class="hidden md:inline text-slate-600">|</span>
+        <span class="hidden md:inline">Simulado Centelha 3 Rondônia · Edital nº 03/2026</span>
+        <span class="hidden lg:inline text-slate-600">|</span>
+        <span class="hidden lg:inline">Aderência: LGPD & RNDS Saúde Digital</span>
+      </div>
+      <div class="flex items-center space-x-3 text-xs">
+        <span id="realtimeStatusText" class="text-emerald-400 font-semibold flex items-center">
+          <i class="fa-solid fa-satellite-dish mr-1 text-[10px]"></i> Sincronizado SSE 24/7
+        </span>
+        <span class="text-slate-600">|</span>
+        <button onclick="navigateTo('landing')" class="text-slate-400 hover:text-white transition-colors">Portal Público</button>
+        <span class="text-slate-600">|</span>
+        <button onclick="quickDemoLogin()" class="bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 px-2 py-0.5 rounded font-bold hover:bg-emerald-500/20 transition-all">
+          Acesso Demo 1-Clique
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- HEADER PRINCIPAL COM NAVEGAÇÃO ENTRE AS 15 TELAS DO SISTEMA              -->
+  <!-- ========================================================================= -->
+  <header class="bg-slate-900/90 backdrop-blur-md border-b border-slate-800 sticky top-0 z-40 transition-colors duration-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo Cuidar+ -->
+        <div class="flex items-center space-x-3 cursor-pointer" onclick="navigateTo('landing')">
+          <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center text-white shadow-lg shadow-emerald-900/40">
+            <i class="fa-solid fa-heart-pulse text-xl"></i>
+          </div>
+          <div>
+            <div class="flex items-center space-x-2">
+              <span class="text-2xl font-black tracking-tight text-white">Cuidar<span class="text-emerald-400">+</span></span>
+              <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+                Centelha 3 RO
+              </span>
+            </div>
+            <p class="text-[11px] text-slate-400 hidden sm:block">Assistente Inteligente para Acompanhamento de Tratamentos</p>
+          </div>
+        </div>
+
+        <!-- Seletor Rápido de Telas & Acessibilidade -->
+        <div class="flex items-center space-x-2 sm:space-x-3">
+          
+          <!-- Dropdown com Catálogo de Todas as 15 Telas -->
+          <div class="relative">
+            <button onclick="toggleScreensMenu()" id="btnScreensMenu" class="flex items-center space-x-2 px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-bold text-slate-200 transition-all">
+              <i class="fa-solid fa-layer-group text-emerald-400"></i>
+              <span class="hidden md:inline">Catálogo de Telas (15)</span>
+              <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+            </button>
+
+            <!-- Menu Dropdown com Todas as 15 Telas -->
+            <div id="screensDropdown" class="hidden absolute right-0 mt-2 w-80 bg-slate-900 rounded-2xl shadow-2xl border border-slate-700 py-2 z-50 max-h-[85vh] overflow-y-auto">
+              <div class="px-4 py-2 border-b border-slate-800 flex items-center justify-between">
+                <span class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">Navegação Rápida entre Telas</span>
+                <span class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full font-bold">15 Telas</span>
+              </div>
+              
+              <div class="p-2 space-y-1 text-xs">
+                <div class="text-[10px] font-bold text-slate-500 px-2 pt-1 uppercase">Público & Autenticação</div>
+                <button onclick="navigateTo('landing')" class="w-full text-left px-3 py-2 rounded-lg hover:bg-slate-800 flex items-center space-x-2 text-slate-300 hover:text-white">
+                  <span class="text-emerald-400 font-bold w-5">01</span>
+                  <span>Landing Page Institucional</span>
+                </button>
+                <button onclick="navigateTo('login')" class="w-full text-left px-3 py-2 rounded-lg hover:bg-slate-800 flex items-center space-x-2 text-slate-300 hover:text-white">
+                  <span class="text-emerald-400 font-bold w-5">02</span>
+                  <span>Tela de Login (Autenticação)</span>
+                </button>
+                <button onclick="navigateTo('cadastro')" class="w-full text-left px-3 py-2 rounded-lg hover:bg-slate-800 flex items-center space-x-2 text-slate-300 hover:text-white">
+                  <span class="text-emerald-400 font-bold w-5">03</span>
+                  <span>Tela de Cadastro de Novo Usuário</span>
+                </button>
+                <button onclick="navigateTo('recuperar-senha')" class="w-full text-left px-3 py-2 rounded-lg hover:bg-slate-800 flex items-center space-x-2 text-slate-300 hover:text-white">
+                  <span class="text-emerald-400 font-bold w-5">04</span>
+                  <span>Tela de Recuperação de Senha</span>
+                </button>
+
+                <div class="text-[10px] font-bold text-slate-500 px-2 pt-2 uppercase">Operacional & Clínico</div>
+                <button onclick="navigateTo('dashboard-paciente')" class="w-full text-left px-3 py-2 rounded-lg hover:bg-slate-800 flex items-center space-x-2 text-slate-300 hover:text-white">
+                  <span class="text-emerald-400 font-bold w-5">05</span>
+                  <span>Dashboard Paciente (Modo Sênior)</span>
+                </button>
+                <button onclick="navigateTo('painel-cuidador')" class="w-full text-left px-3 py-2 rounded-lg hover:bg-slate-800 flex items-center space-x-2 text-slate-300 hover:text-white">
+                  <span class="text-emerald-400 font-bold w-5">06</span>
+                  <span>Painel do Cuidador em Tempo Real</span>
+                </button>
+                <button onclick="navigateTo('plano-cuidado')" class="w-full text-left px-3 py-2 rounded-lg hover:bg-slate-800 flex items-center space-x-2 text-slate-300 hover:text-white">
+                  <span class="text-emerald-400 font-bold w-5">07</span>
+                  <span>Gestão do Plano de Cuidado</span>
+                </button>
+                <button onclick="navigateTo('notificacoes')" class="w-full text-left px-3 py-2 rounded-lg hover:bg-slate-800 flex items-center space-x-2 text-slate-300 hover:text-white">
+                  <span class="text-emerald-400 font-bold w-5">08</span>
+                  <span>Notificações & Registro de Omissões</span>
+                </button>
+                <button onclick="navigateTo('medicoes')" class="w-full text-left px-3 py-2 rounded-lg hover:bg-slate-800 flex items-center space-x-2 text-slate-300 hover:text-white">
+                  <span class="text-emerald-400 font-bold w-5">09</span>
+                  <span>Medições de Saúde (PA & Glicemia)</span>
+                </button>
+                <button onclick="navigateTo('painel-medico')" class="w-full text-left px-3 py-2 rounded-lg hover:bg-slate-800 flex items-center space-x-2 text-slate-300 hover:text-white">
+                  <span class="text-emerald-400 font-bold w-5">10</span>
+                  <span>Painel Clínico APS & Relatório 30D</span>
+                </button>
+                <button onclick="navigateTo('ia-assistente')" class="w-full text-left px-3 py-2 rounded-lg hover:bg-slate-800 flex items-center space-x-2 text-slate-300 hover:text-white">
+                  <span class="text-emerald-400 font-bold w-5">11</span>
+                  <span>Assistente IA Cuidar+ Preventiva</span>
+                </button>
+
+                <div class="text-[10px] font-bold text-slate-500 px-2 pt-2 uppercase">Administrativo & Governança</div>
+                <button onclick="navigateTo('admin-usuarios')" class="w-full text-left px-3 py-2 rounded-lg hover:bg-slate-800 flex items-center space-x-2 text-slate-300 hover:text-white">
+                  <span class="text-emerald-400 font-bold w-5">12</span>
+                  <span>Admin: Gestão de Usuários</span>
+                </button>
+                <button onclick="navigateTo('admin-vinculos')" class="w-full text-left px-3 py-2 rounded-lg hover:bg-slate-800 flex items-center space-x-2 text-slate-300 hover:text-white">
+                  <span class="text-emerald-400 font-bold w-5">13</span>
+                  <span>Admin: Gestão de Vínculos</span>
+                </button>
+                <button onclick="navigateTo('admin-lgpd')" class="w-full text-left px-3 py-2 rounded-lg hover:bg-slate-800 flex items-center space-x-2 text-slate-300 hover:text-white">
+                  <span class="text-emerald-400 font-bold w-5">14</span>
+                  <span>Admin: Auditoria & LGPD</span>
+                </button>
+                <button onclick="navigateTo('configuracoes')" class="w-full text-left px-3 py-2 rounded-lg hover:bg-slate-800 flex items-center space-x-2 text-slate-300 hover:text-white">
+                  <span class="text-emerald-400 font-bold w-5">15</span>
+                  <span>Configurações & Acessibilidade</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controle de Acessibilidade: Tamanho de Fonte (RNF01) -->
+          <div class="flex items-center bg-slate-800 rounded-xl p-1 border border-slate-700">
+            <button onclick="setFontSize('normal')" id="btnFontNormal" title="Fonte Normal" class="px-2 py-1 text-xs font-bold rounded-lg bg-slate-700 text-white">A</button>
+            <button onclick="setFontSize('large')" id="btnFontLarge" title="Fonte Grande" class="px-2 py-1 text-sm font-bold rounded-lg text-slate-400 hover:text-white">A+</button>
+            <button onclick="setFontSize('extralarge')" id="btnFontExtraLarge" title="Fonte Extra Grande (Idosos)" class="px-2 py-1 text-base font-bold rounded-lg text-slate-400 hover:text-white">A++</button>
+          </div>
+
+          <!-- Botão Alto Contraste (RNF01) -->
+          <button onclick="toggleHighContrast()" id="btnContrast" title="Alternar Alto Contraste (Acessibilidade)" 
+                  class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-200 border border-slate-700 transition-all">
+            <i class="fa-solid fa-circle-half-stroke text-sm"></i>
+          </button>
+
+          <!-- Botão Voz / Leitor Auditivo (RNF01) -->
+          <button onclick="toggleVoiceSpeech()" id="btnVoice" title="Ativar/Desativar Leitura por Voz" 
+                  class="w-9 h-9 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 flex items-center justify-center text-emerald-400 border border-emerald-500/30 transition-all">
+            <i id="voiceIcon" class="fa-solid fa-volume-high text-sm"></i>
+          </button>
+
+          <!-- Perfil Ativo Dropdown -->
+          <div class="relative">
+            <button onclick="toggleUserDropdown()" id="userBtn" class="flex items-center space-x-2 pl-2 pr-3 py-1.5 rounded-xl bg-slate-800 border border-slate-700 hover:border-emerald-500 transition-all">
+              <div id="userAvatarPlaceholder" class="w-7 h-7 rounded-lg bg-emerald-600 flex items-center justify-center text-xs font-bold text-white">
+                👴
+              </div>
+              <div class="text-left hidden lg:block">
+                <div id="currentUserName" class="text-xs font-bold text-white leading-tight">Seu Antenor</div>
+                <div id="currentUserRole" class="text-[10px] text-emerald-400 font-semibold leading-tight">Paciente (Sênior)</div>
+              </div>
+              <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+            </button>
+
+            <div id="userDropdown" class="hidden absolute right-0 mt-2 w-64 bg-slate-900 rounded-2xl shadow-2xl border border-slate-700 py-2 z-50 text-xs">
+              <div class="px-4 py-2 border-b border-slate-800 text-[10px] font-bold text-slate-400 uppercase">
+                Alternar Perfil em 1 Clique
+              </div>
+              <button onclick="selectUserProfile('usr_1')" class="w-full px-4 py-2.5 text-left hover:bg-slate-800 flex items-center space-x-3 text-slate-200">
+                <span class="text-base">👴</span>
+                <div>
+                  <div class="font-bold text-white">Seu Antenor Silveira (72a)</div>
+                  <div class="text-[10px] text-emerald-400">Paciente Crônico (HAS + DM2)</div>
+                </div>
+              </button>
+              <button onclick="selectUserProfile('usr_2')" class="w-full px-4 py-2.5 text-left hover:bg-slate-800 flex items-center space-x-3 text-slate-200">
+                <span class="text-base">👨‍👦</span>
+                <div>
+                  <div class="font-bold text-white">Micael Lima Araujo Frota</div>
+                  <div class="text-[10px] text-blue-400">Familiar / Cuidador Autorizado</div>
+                </div>
+              </button>
+              <button onclick="selectUserProfile('usr_3')" class="w-full px-4 py-2.5 text-left hover:bg-slate-800 flex items-center space-x-3 text-slate-200">
+                <span class="text-base">👩‍⚕️</span>
+                <div>
+                  <div class="font-bold text-white">Dra. Camila Vasconcelos</div>
+                  <div class="text-[10px] text-purple-400">Médica de Família - APS UBS</div>
+                </div>
+              </button>
+              <div class="border-t border-slate-800 mt-1 pt-1">
+                <button onclick="navigateTo('login')" class="w-full px-4 py-2 text-left hover:bg-slate-800 text-rose-400 font-semibold flex items-center space-x-2">
+                  <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                  <span>Trocar de Conta / Sair</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Barra de Navegação Horizontal por Abas -->
+      <nav class="flex space-x-1 overflow-x-auto pb-2.5 pt-1 border-t border-slate-800/80 scrollbar-none text-xs font-semibold" id="mainNavBar">
+        <button onclick="navigateTo('landing')" id="nav_landing" class="nav-tab px-3.5 py-2 rounded-xl text-slate-300 hover:bg-slate-800 whitespace-nowrap flex items-center space-x-1.5 transition-all">
+          <i class="fa-solid fa-house text-emerald-400"></i>
+          <span>Página Inicial</span>
+        </button>
+        <button onclick="navigateTo('dashboard-paciente')" id="nav_dashboard-paciente" class="nav-tab px-3.5 py-2 rounded-xl text-slate-300 hover:bg-slate-800 whitespace-nowrap flex items-center space-x-1.5 transition-all">
+          <i class="fa-solid fa-hand-holding-heart text-teal-400"></i>
+          <span>Visão Paciente (Sênior)</span>
+        </button>
+        <button onclick="navigateTo('painel-cuidador')" id="nav_painel-cuidador" class="nav-tab px-3.5 py-2 rounded-xl text-slate-300 hover:bg-slate-800 whitespace-nowrap flex items-center space-x-1.5 transition-all">
+          <i class="fa-solid fa-users-viewfinder text-blue-400"></i>
+          <span>Painel do Cuidador</span>
+        </button>
+        <button onclick="navigateTo('plano-cuidado')" id="nav_plano-cuidado" class="nav-tab px-3.5 py-2 rounded-xl text-slate-300 hover:bg-slate-800 whitespace-nowrap flex items-center space-x-1.5 transition-all">
+          <i class="fa-solid fa-prescription-bottle-medical text-amber-400"></i>
+          <span>Plano de Tratamento</span>
+        </button>
+        <button onclick="navigateTo('medicoes')" id="nav_medicoes" class="nav-tab px-3.5 py-2 rounded-xl text-slate-300 hover:bg-slate-800 whitespace-nowrap flex items-center space-x-1.5 transition-all">
+          <i class="fa-solid fa-heart-pulse text-rose-400"></i>
+          <span>Medições (PA & Glicemia)</span>
+        </button>
+        <button onclick="navigateTo('painel-medico')" id="nav_painel-medico" class="nav-tab px-3.5 py-2 rounded-xl text-slate-300 hover:bg-slate-800 whitespace-nowrap flex items-center space-x-1.5 transition-all">
+          <i class="fa-solid fa-stethoscope text-purple-400"></i>
+          <span>Painel Clínico APS & PDF</span>
+        </button>
+        <button onclick="navigateTo('ia-assistente')" id="nav_ia-assistente" class="nav-tab px-3.5 py-2 rounded-xl text-slate-300 hover:bg-slate-800 whitespace-nowrap flex items-center space-x-1.5 transition-all">
+          <i class="fa-solid fa-brain text-emerald-400"></i>
+          <span>IA Assistente Cuidar+</span>
+        </button>
+        <button onclick="navigateTo('admin-usuarios')" id="nav_admin-usuarios" class="nav-tab px-3.5 py-2 rounded-xl text-slate-300 hover:bg-slate-800 whitespace-nowrap flex items-center space-x-1.5 transition-all">
+          <i class="fa-solid fa-user-shield text-indigo-400"></i>
+          <span>Admin Usuários</span>
+        </button>
+        <button onclick="navigateTo('admin-vinculos')" id="nav_admin-vinculos" class="nav-tab px-3.5 py-2 rounded-xl text-slate-300 hover:bg-slate-800 whitespace-nowrap flex items-center space-x-1.5 transition-all">
+          <i class="fa-solid fa-link text-cyan-400"></i>
+          <span>Admin Vínculos</span>
+        </button>
+        <button onclick="navigateTo('admin-lgpd')" id="nav_admin-lgpd" class="nav-tab px-3.5 py-2 rounded-xl text-slate-300 hover:bg-slate-800 whitespace-nowrap flex items-center space-x-1.5 transition-all">
+          <i class="fa-solid fa-file-shield text-emerald-400"></i>
+          <span>Admin LGPD</span>
+        </button>
+        <button onclick="navigateTo('configuracoes')" id="nav_configuracoes" class="nav-tab px-3.5 py-2 rounded-xl text-slate-300 hover:bg-slate-800 whitespace-nowrap flex items-center space-x-1.5 transition-all">
+          <i class="fa-solid fa-sliders text-slate-400"></i>
+          <span>Configurações</span>
+        </button>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- Container de Toasts Flutuantes -->
+  <div id="toastContainer" class="fixed top-24 right-4 z-50 flex flex-col space-y-2 max-w-sm pointer-events-none"></div>
+
+  <!-- ========================================================================= -->
+  <!-- CONTEÚDO PRINCIPAL: RENDERIZAÇÃO DAS 15 TELAS DO SISTEMA                 -->
+  <!-- ========================================================================= -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+    <!-- ======================================================================= -->
+    <!-- TELA 01: LANDING PAGE INSTITUCIONAL (PÚBLICO)                           -->
+    <!-- ======================================================================= -->
+    <section id="screen-landing" class="screen-view space-y-12 py-4">
+      
+      <!-- Hero Editorial (Estilo Pierre Finance / Open Health) -->
+      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 border border-slate-800 p-8 sm:p-14 text-center">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.12)_0,transparent_70%)] pointer-events-none"></div>
+        
+        <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold mb-6">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>Saúde Digital 2.4 · Simples por fora, inteligente por dentro</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-white max-w-4xl mx-auto leading-tight">
+          Um assistente inteligente que cuida do tratamento enquanto você <span class="text-emerald-400">cuida da vida</span>.
+        </h1>
+
+        <p class="text-slate-400 text-base sm:text-xl max-w-2xl mx-auto mt-6 leading-relaxed">
+          O super app definitivo de saúde preventiva que unifica pacientes idosos, cuidadores e profissionais da Atenção Primária em um único fluxo calmo, com lembretes pontuais e sem burocracia.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+          <button onclick="navigateTo('cadastro')" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-base shadow-xl shadow-emerald-900/50 flex items-center justify-center space-x-2 transition-all transform hover:scale-[1.02]">
+            <span>Começar Agora Gratuitamente</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+          <button onclick="quickDemoLogin()" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-slate-800 hover:bg-slate-700 text-white font-extrabold text-base border border-slate-700 flex items-center justify-center space-x-2 transition-all">
+            <i class="fa-solid fa-sparkles text-emerald-400"></i>
+            <span>Explorar Modo Demonstração</span>
+          </button>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-center gap-6 mt-10 text-xs font-semibold text-slate-400 border-t border-slate-800/80 pt-6">
+          <span class="flex items-center"><i class="fa-solid fa-circle-check text-emerald-400 mr-2"></i>Sem taxa de adesão</span>
+          <span class="flex items-center"><i class="fa-solid fa-shield-halved text-emerald-400 mr-2"></i>Criptografia de Ponta a Ponta 256-bit</span>
+          <span class="flex items-center"><i class="fa-solid fa-hospital-user text-emerald-400 mr-2"></i>Compatível com SUS / RNDS & LGPD</span>
+        </div>
+      </div>
+
+      <!-- Três Pilares Integrados -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-slate-900 p-8 rounded-3xl border border-slate-800 space-y-4 hover:border-emerald-500/50 transition-all">
+          <div class="w-12 h-12 rounded-2xl bg-teal-500/20 text-teal-400 flex items-center justify-center text-2xl font-bold">
+            👴
+          </div>
+          <h3 class="text-xl font-black text-white">Pacientes Crônicos e Idosos</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Interface extremamente acessível, modo de alto contraste, letras ampliadas, leitor de voz sintetizada e confirmação de dose com apenas 1 toque.
+          </p>
+        </div>
+
+        <div class="bg-slate-900 p-8 rounded-3xl border border-slate-800 space-y-4 hover:border-emerald-500/50 transition-all">
+          <div class="w-12 h-12 rounded-2xl bg-blue-500/20 text-blue-400 flex items-center justify-center text-2xl font-bold">
+            👨‍👦
+          </div>
+          <h3 class="text-xl font-black text-white">Familiares e Cuidadores</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Acompanhamento remoto e em tempo real via Server-Sent Events, alertas automáticos se uma dose for esquecida e botão de alarme sonoro remoto.
+          </p>
+        </div>
+
+        <div class="bg-slate-900 p-8 rounded-3xl border border-slate-800 space-y-4 hover:border-emerald-500/50 transition-all">
+          <div class="w-12 h-12 rounded-2xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-2xl font-bold">
+            👩‍⚕️
+          </div>
+          <h3 class="text-xl font-black text-white">Equipes de Atenção Primária</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Painel médico com taxas consolidadas de 30 dias de adesão, curvas de pressão arterial e glicemia, e exportação de relatório PDF com 1 clique.
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- TELA 02: MODAL / TELA DE AUTENTICAÇÃO (LOGIN) (RF01)                    -->
+    <!-- ======================================================================= -->
+    <section id="screen-login" class="screen-view hidden flex items-center justify-center py-8">
+      <div class="w-full max-w-md bg-slate-900 rounded-3xl border border-slate-800 p-8 space-y-6 shadow-2xl relative">
+        <div class="text-center space-y-2">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center text-white mx-auto shadow-lg shadow-emerald-900/40">
+            <i class="fa-solid fa-heart-pulse text-2xl"></i>
+          </div>
+          <h2 class="text-2xl font-black text-white">Bem-vindo de volta ao Cuidar+</h2>
+          <p class="text-xs text-slate-400">Acesse seu assistente de tratamento e saúde</p>
+        </div>
+
+        <!-- Banner Modo Demo Rápido -->
+        <div class="bg-emerald-950/40 border border-emerald-500/30 rounded-2xl p-4 flex items-center justify-between">
+          <div>
+            <div class="text-xs font-bold text-emerald-400">Quer apenas testar o sistema?</div>
+            <div class="text-[11px] text-slate-400">Acesso completo pré-carregado em 1 clique</div>
+          </div>
+          <button onclick="quickDemoLogin()" class="px-3.5 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs transition-all">
+            Acesso Demo
+          </button>
+        </div>
+
+        <!-- Formulário de Login -->
+        <form id="formLogin" onsubmit="handleLoginSubmit(event)" class="space-y-4 text-xs font-semibold">
+          <div>
+            <label class="block text-slate-400 mb-1">Endereço de E-mail</label>
+            <div class="relative">
+              <i class="fa-regular fa-envelope absolute left-4 top-3.5 text-slate-500"></i>
+              <input type="email" id="loginEmail" value="antenor@cuidarmais.com.br" required placeholder="seu.email@exemplo.com"
+                     class="w-full pl-11 pr-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 text-sm">
+            </div>
+          </div>
+
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <label class="text-slate-400">Sua Senha</label>
+              <button type="button" onclick="navigateTo('recuperar-senha')" class="text-emerald-400 hover:underline text-[11px]">
+                Esqueceu a senha?
+              </button>
+            </div>
+            <div class="relative">
+              <i class="fa-solid fa-lock absolute left-4 top-3.5 text-slate-500"></i>
+              <input type="password" id="loginSenha" value="demo123" required placeholder="••••••••••••"
+                     class="w-full pl-11 pr-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 text-sm">
+            </div>
+          </div>
+
+          <button type="submit" class="w-full py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-sm shadow-lg shadow-emerald-900/50 flex items-center justify-center space-x-2 transition-all">
+            <span>Entrar na Conta</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </form>
+
+        <div class="text-center pt-2 border-t border-slate-800 text-xs text-slate-400">
+          Não possui uma conta? 
+          <button onclick="navigateTo('cadastro')" class="text-emerald-400 font-bold hover:underline ml-1">Criar Conta</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- TELA 03: TELA DE CADASTRO DE NOVO USUÁRIO (RF01)                        -->
+    <!-- ======================================================================= -->
+    <section id="screen-cadastro" class="screen-view hidden flex items-center justify-center py-6">
+      <div class="w-full max-w-lg bg-slate-900 rounded-3xl border border-slate-800 p-8 space-y-6 shadow-2xl">
+        <div class="text-center space-y-1">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center text-white mx-auto shadow-lg shadow-emerald-900/40">
+            <i class="fa-solid fa-user-plus text-2xl"></i>
+          </div>
+          <h2 class="text-2xl font-black text-white">Criar sua conta no Cuidar+</h2>
+          <p class="text-xs text-slate-400">Junte-se à revolução do acompanhamento inteligente de saúde</p>
+        </div>
+
+        <form id="formCadastro" onsubmit="handleCadastroSubmit(event)" class="space-y-4 text-xs font-semibold">
+          <div>
+            <label class="block text-slate-400 mb-1">Seu Nome Completo</label>
+            <input type="text" id="cadNome" required placeholder="Ex: Maria dos Santos Silveira"
+                   class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 text-sm">
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-slate-400 mb-1">Endereço de E-mail</label>
+              <input type="email" id="cadEmail" required placeholder="seu@email.com"
+                     class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 text-sm">
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">Telefone / WhatsApp</label>
+              <input type="text" id="cadTelefone" placeholder="(69) 99999-8888"
+                     class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 text-sm">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-slate-400 mb-1">Perfil de Usuário (RF01)</label>
+            <select id="cadTipoUsuario" class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-emerald-500 text-sm">
+              <option value="paciente">👴 Paciente (Acompanhamento e lembretes em 1 toque)</option>
+              <option value="cuidador">👨‍👦 Familiar / Cuidador Autorizado (Monitoramento remoto)</option>
+              <option value="profissional">👩‍⚕️ Profissional de Saúde (Médico/Enfermeiro APS)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-slate-400 mb-1">Sua Senha de Acesso</label>
+            <input type="password" id="cadSenha" required minlength="6" placeholder="••••••••••••"
+                   class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 text-sm">
+            <div class="mt-2 space-y-1 text-[11px] text-slate-500">
+              <div class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-1.5 text-[10px]"></i> Mínimo de 6 caracteres</div>
+              <div class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-1.5 text-[10px]"></i> Armazenamento seguro de acordo com as diretrizes da LGPD</div>
+            </div>
+          </div>
+
+          <div class="p-3 bg-slate-950 rounded-2xl border border-slate-800 text-[11px] text-slate-400 flex items-start space-x-2">
+            <input type="checkbox" id="cadLgpdConsent" required checked class="mt-0.5 rounded text-emerald-500 focus:ring-0">
+            <label for="cadLgpdConsent">
+              Declaro consentimento formal para armazenamento de dados de saúde segundo as normas da LGPD (Lei 13.709/2018).
+            </label>
+          </div>
+
+          <button type="submit" class="w-full py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-sm shadow-lg shadow-emerald-900/50 flex items-center justify-center space-x-2 transition-all">
+            <span>Continuar Cadastro</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </form>
+
+        <div class="text-center pt-2 border-t border-slate-800 text-xs text-slate-400">
+          Já possui conta? 
+          <button onclick="navigateTo('login')" class="text-emerald-400 font-bold hover:underline ml-1">Fazer Login</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- TELA 04: TELA DE RECUPERAÇÃO DE SENHA (RF01)                            -->
+    <!-- ======================================================================= -->
+    <section id="screen-recuperar-senha" class="screen-view hidden flex items-center justify-center py-8">
+      <div class="w-full max-w-md bg-slate-900 rounded-3xl border border-slate-800 p-8 space-y-6 shadow-2xl">
+        <div class="text-center space-y-2">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto text-2xl">
+            <i class="fa-solid fa-key"></i>
+          </div>
+          <h2 class="text-2xl font-black text-white">Recuperar Acesso à Conta</h2>
+          <p class="text-xs text-slate-400">Enviaremos instruções seguras de redefinição para o seu e-mail</p>
+        </div>
+
+        <form id="formRecuperarSenha" onsubmit="handleRecuperarSenhaSubmit(event)" class="space-y-4 text-xs font-semibold">
+          <div>
+            <label class="block text-slate-400 mb-1">Endereço de E-mail Cadastrado</label>
+            <div class="relative">
+              <i class="fa-regular fa-envelope absolute left-4 top-3.5 text-slate-500"></i>
+              <input type="email" id="recoverEmail" value="antenor@cuidarmais.com.br" required placeholder="seu.email@exemplo.com"
+                     class="w-full pl-11 pr-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 text-sm">
+            </div>
+          </div>
+
+          <button type="submit" class="w-full py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-sm shadow-lg shadow-emerald-900/50 flex items-center justify-center space-x-2 transition-all">
+            <span>Enviar Link de Recuperação</span>
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </form>
+
+        <div id="recoverFeedback" class="hidden p-4 rounded-2xl bg-emerald-950/40 border border-emerald-500/40 text-emerald-300 text-xs"></div>
+
+        <div class="text-center pt-2 border-t border-slate-800">
+          <button onclick="navigateTo('login')" class="text-xs text-slate-400 hover:text-white font-semibold">
+            ← Voltar para a tela de Login
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- TELA 05: DASHBOARD DO PACIENTE (MODO SÊNIOR) (CA01, CA04, RNF01)        -->
+    <!-- ======================================================================= -->
+    <section id="screen-dashboard-paciente" class="screen-view hidden space-y-6">
+      
+      <!-- Banner Sênior Acolhedor -->
+      <div class="bg-gradient-to-r from-emerald-800 to-teal-900 rounded-3xl p-6 sm:p-8 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 border border-emerald-700/50">
+        <div class="space-y-2 text-center md:text-left">
+          <div class="inline-flex items-center space-x-2 bg-emerald-950/80 px-3.5 py-1 rounded-full text-xs font-semibold text-emerald-300 border border-emerald-600/40">
+            <i class="fa-regular fa-calendar-check"></i>
+            <span id="patientTodayDateText">Hoje</span>
+          </div>
+          <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+            Olá, <span id="seniorNameHeading">Seu Antenor</span>! ☀️
+          </h1>
+          <p class="text-emerald-100 text-base max-w-xl">
+            Aqui está sua rotina de cuidados de hoje. Beba água e confirme cada medicação com apenas 1 toque.
+          </p>
+        </div>
+        
+        <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+          <button onclick="readPatientDailyRoutine()" class="px-5 py-3.5 rounded-2xl bg-white/20 hover:bg-white/30 text-white font-bold text-base flex items-center justify-center space-x-2 border border-white/30 transition-all touch-target-senior">
+            <i class="fa-solid fa-volume-high text-xl"></i>
+            <span>Ouvir Minhas Tarefas</span>
+          </button>
+          <button onclick="triggerHelpAlert()" class="px-5 py-3.5 rounded-2xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-base flex items-center justify-center space-x-2 shadow-lg transition-all touch-target-senior">
+            <i class="fa-solid fa-phone-volume text-xl"></i>
+            <span>Chamar Micael (Filho)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- CARD HERO DE 1 TOQUE: TOMAR AGORA (CA01 & CA04) -->
+      <div id="seniorHeroCard" class="bg-slate-900 rounded-3xl p-6 sm:p-8 border-2 border-emerald-500 shadow-2xl relative overflow-hidden transition-all">
+        <!-- Renderizado dinamicamente via JS -->
+      </div>
+
+      <!-- Cronograma Completo de Hoje -->
+      <div class="bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-800 shadow-sm space-y-6">
+        <div class="flex items-center justify-between flex-wrap gap-4 border-b border-slate-800 pb-4">
+          <div>
+            <h2 class="text-2xl font-black text-white flex items-center space-x-3">
+              <i class="fa-solid fa-clock-rotate-left text-emerald-400"></i>
+              <span>Cronograma Completo de Hoje</span>
+            </h2>
+            <p class="text-slate-400 text-sm">Organizado em ordem de horário com botões ampliados</p>
+          </div>
+          <button onclick="navigateTo('medicoes')" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs flex items-center space-x-2 border border-slate-700 transition-all">
+            <i class="fa-solid fa-heart-pulse text-rose-400"></i>
+            <span>Aferir Pressão / Glicemia</span>
+          </button>
+        </div>
+
+        <div id="seniorScheduleGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Cards de remédios -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- TELA 06: PAINEL DO CUIDADOR / FAMILIAR (CA02 - TEMPO REAL)              -->
+    <!-- ======================================================================= -->
+    <section id="screen-painel-cuidador" class="screen-view hidden space-y-6">
+      
+      <div class="bg-gradient-to-r from-blue-900 to-indigo-950 rounded-3xl p-6 sm:p-8 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 border border-blue-800/50">
+        <div>
+          <div class="inline-flex items-center space-x-2 bg-blue-950/80 px-3.5 py-1 rounded-full text-xs font-semibold text-blue-300 border border-blue-700/40 mb-2">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Cuidador Principal: Micael Lima Araujo Frota</span>
+          </div>
+          <h1 class="text-3xl font-extrabold tracking-tight">
+            Acompanhamento em Tempo Real: <span class="text-blue-300">Seu Antenor</span>
+          </h1>
+          <p class="text-blue-200 text-sm max-w-xl mt-1">
+            Status sincronizado continuamente via SSE. Se uma medicação crítica atrasar mais de 30 minutos, um alerta é emitido imediatamente.
+          </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+          <button onclick="openNudgeModal()" class="px-5 py-3.5 rounded-2xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm flex items-center justify-center space-x-2 shadow-lg transition-all">
+            <i class="fa-solid fa-bell text-lg"></i>
+            <span>Disparar Lembrete Remoto</span>
+          </button>
+          <button onclick="navigateTo('plano-cuidado')" class="px-5 py-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm flex items-center justify-center space-x-2 border border-slate-700 transition-all">
+            <i class="fa-solid fa-plus text-lg"></i>
+            <span>Adicionar Remédio</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- KPIs do Cuidador -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-slate-900 p-5 rounded-3xl border border-slate-800">
+          <div class="text-xs font-bold uppercase tracking-wider text-slate-400">Tarefas de Hoje</div>
+          <div class="text-3xl font-black text-white mt-2" id="kpiCaregiverTodayFraction">-/-</div>
+          <div class="text-xs text-emerald-400 font-semibold mt-1">
+            <i class="fa-solid fa-circle-check mr-1"></i> <span id="kpiCaregiverTodayPercent">0%</span> concluído
+          </div>
+        </div>
+
+        <div class="bg-slate-900 p-5 rounded-3xl border border-slate-800">
+          <div class="text-xs font-bold uppercase tracking-wider text-slate-400">Adesão Mensal (30D)</div>
+          <div class="text-3xl font-black text-emerald-400 mt-2" id="kpiCaregiverMonthRate">92%</div>
+          <div class="text-xs text-slate-400 font-semibold mt-1">Meta da OMS: &gt;85%</div>
+        </div>
+
+        <div class="bg-slate-900 p-5 rounded-3xl border border-slate-800">
+          <div class="text-xs font-bold uppercase tracking-wider text-slate-400">Última Pressão (PA)</div>
+          <div class="text-3xl font-black text-white mt-2" id="kpiCaregiverBP">125/82</div>
+          <div class="text-xs text-emerald-400 font-semibold mt-1">
+            <i class="fa-solid fa-check mr-1"></i> Controlada
+          </div>
+        </div>
+
+        <div class="bg-slate-900 p-5 rounded-3xl border border-slate-800">
+          <div class="text-xs font-bold uppercase tracking-wider text-slate-400">Última Glicemia</div>
+          <div class="text-3xl font-black text-white mt-2" id="kpiCaregiverGlucose">108 mg/dL</div>
+          <div class="text-xs text-emerald-400 font-semibold mt-1">
+            <i class="fa-solid fa-check mr-1"></i> Jejum Adequado
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline ao Vivo & Alertas Recentes -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2 bg-slate-900 rounded-3xl p-6 border border-slate-800 space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <h3 class="text-lg font-bold text-white flex items-center space-x-2">
+              <i class="fa-solid fa-list-check text-blue-400"></i>
+              <span>Status do Plano de Cuidados em Tempo Real</span>
+            </h3>
+            <span class="text-[11px] bg-blue-500/20 text-blue-300 font-bold px-2.5 py-1 rounded-full border border-blue-500/30">
+              Live Feed SSE
+            </span>
+          </div>
+          <div id="caregiverLiveScheduleFeed" class="space-y-3"></div>
+        </div>
+
+        <div class="bg-slate-900 rounded-3xl p-6 border border-slate-800 space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <h3 class="text-lg font-bold text-white flex items-center space-x-2">
+              <i class="fa-solid fa-bell text-amber-400"></i>
+              <span>Alertas e Notificações</span>
+            </h3>
+            <button onclick="markAllNotificationsRead()" class="text-xs text-blue-400 font-bold hover:underline">Limpar</button>
+          </div>
+          <div id="caregiverNotificationsFeed" class="space-y-3 max-h-96 overflow-y-auto"></div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- TELA 07: GESTÃO DO PLANO DE CUIDADO (RF02)                              -->
+    <!-- ======================================================================= -->
+    <section id="screen-plano-cuidado" class="screen-view hidden space-y-6">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-slate-900 p-6 rounded-3xl border border-slate-800 shadow-sm">
+        <div>
+          <h2 class="text-2xl font-black text-white flex items-center space-x-2">
+            <i class="fa-solid fa-prescription-bottle-medical text-teal-400"></i>
+            <span>Plano de Tratamento Cadastrado</span>
+          </h2>
+          <p class="text-slate-400 text-sm">Gerencie medicamentos, exames periódicos, consultas e medições de rotina</p>
+        </div>
+        <button onclick="openNewItemModal()" class="px-5 py-3 rounded-2xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-extrabold text-sm flex items-center space-x-2 shadow-lg transition-all">
+          <i class="fa-solid fa-plus"></i>
+          <span>Cadastrar Novo Item de Cuidado</span>
+        </button>
+      </div>
+
+      <div id="carePlanFullGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- TELA 08: CENTRAL DE NOTIFICAÇÕES & OMISSÕES (RF03, RF04)                -->
+    <!-- ======================================================================= -->
+    <section id="screen-notificacoes" class="screen-view hidden space-y-6">
+      <div class="bg-slate-900 p-6 rounded-3xl border border-slate-800 shadow-sm flex items-center justify-between">
+        <div>
+          <h2 class="text-2xl font-black text-white flex items-center space-x-2">
+            <i class="fa-solid fa-bell text-amber-400"></i>
+            <span>Central de Notificações, Alarmes & Omissões</span>
+          </h2>
+          <p class="text-slate-400 text-sm">Registro histórico de alarmes sonoros disparados e justificativas documentadas</p>
+        </div>
+        <button onclick="markAllNotificationsRead()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs border border-slate-700">
+          Marcar Todas como Lidas
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="bg-slate-900 rounded-3xl p-6 border border-slate-800 space-y-4">
+          <h3 class="text-lg font-bold text-white flex items-center space-x-2 border-b border-slate-800 pb-3">
+            <i class="fa-solid fa-triangle-exclamation text-amber-400"></i>
+            <span>Histórico de Justificativas Registradas pelo Paciente (RF04)</span>
+          </h3>
+          <div id="notifJustificationsList" class="space-y-3 max-h-96 overflow-y-auto"></div>
+        </div>
+
+        <div class="bg-slate-900 rounded-3xl p-6 border border-slate-800 space-y-4">
+          <h3 class="text-lg font-bold text-white flex items-center space-x-2 border-b border-slate-800 pb-3">
+            <i class="fa-solid fa-clock text-blue-400"></i>
+            <span>Registro de Alarmes e Lembretes Disparados (RF03)</span>
+          </h3>
+          <div id="notifRemindersList" class="space-y-3 max-h-96 overflow-y-auto"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- TELA 09: MEDIÇÕES DE SAÚDE (PRESSÃO & GLICEMIA)                         -->
+    <!-- ======================================================================= -->
+    <section id="screen-medicoes" class="screen-view hidden space-y-6">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-slate-900 p-6 rounded-3xl border border-slate-800 shadow-sm">
+        <div>
+          <h2 class="text-2xl font-black text-white flex items-center space-x-2">
+            <i class="fa-solid fa-heart-pulse text-rose-400"></i>
+            <span>Histórico de Medições de Saúde</span>
+          </h2>
+          <p class="text-slate-400 text-sm">Registro clínico de Pressão Arterial (Sistólica/Diastólica) e Glicemia Capilar (HGT)</p>
+        </div>
+        <button onclick="openNewMetricModal()" class="px-5 py-3 rounded-2xl bg-rose-500 hover:bg-rose-400 text-white font-extrabold text-sm flex items-center space-x-2 shadow-lg transition-all">
+          <i class="fa-solid fa-plus"></i>
+          <span>Registrar Nova Medição</span>
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="bg-slate-900 rounded-3xl p-6 border border-slate-800 space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <h3 class="text-lg font-bold text-white flex items-center space-x-2">
+              <i class="fa-solid fa-heart-pulse text-rose-500"></i>
+              <span>Pressão Arterial (mmHg)</span>
+            </h3>
+            <span class="text-xs bg-rose-500/20 text-rose-300 font-bold px-2.5 py-0.5 rounded-full border border-rose-500/30">Meta: &lt; 140/90</span>
+          </div>
+          <div id="fullMetricsBPList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+        </div>
+
+        <div class="bg-slate-900 rounded-3xl p-6 border border-slate-800 space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <h3 class="text-lg font-bold text-white flex items-center space-x-2">
+              <i class="fa-solid fa-droplet text-amber-500"></i>
+              <span>Glicemia Capilar (mg/dL)</span>
+            </h3>
+            <span class="text-xs bg-amber-500/20 text-amber-300 font-bold px-2.5 py-0.5 rounded-full border border-amber-500/30">Meta Jejum: 70-110</span>
+          </div>
+          <div id="fullMetricsGlucoseList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- TELA 10: PAINEL CLÍNICO APS & RELATÓRIO 30D (CA03 & RF06)               -->
+    <!-- ======================================================================= -->
+    <section id="screen-painel-medico" class="screen-view hidden space-y-6">
+      
+      <div class="bg-gradient-to-r from-purple-900 to-indigo-950 rounded-3xl p-6 sm:p-8 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 border border-purple-800/50">
+        <div>
+          <div class="inline-flex items-center space-x-2 bg-purple-950/80 px-3.5 py-1 rounded-full text-xs font-semibold text-purple-300 border border-purple-700/40 mb-2">
+            <i class="fa-solid fa-hospital-user"></i>
+            <span>Painel da Atenção Primária à Saúde (APS) · Dra. Camila Vasconcelos</span>
+          </div>
+          <h1 class="text-3xl font-extrabold tracking-tight">
+            Resumo Clínico Consolidado (30 Dias)
+          </h1>
+          <p class="text-purple-200 text-sm max-w-xl mt-1">
+            Paciente: Seu Antenor Silveira (72a) · Diagnósticos: Hipertensão Arterial + Diabetes Tipo 2
+          </p>
+        </div>
+
+        <!-- BOTÃO OFICIAL CRITÉRIO DE ACEITE CA03: 1 CLIQUE PARA GERAR PDF -->
+        <button onclick="generateAdherencePDF()" id="btnGeneratePDF" class="px-6 py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-base flex items-center justify-center space-x-3 shadow-2xl transition-all transform hover:scale-[1.02]">
+          <i class="fa-solid fa-file-pdf text-2xl text-rose-950"></i>
+          <div class="text-left">
+            <div class="leading-none text-[10px] font-black uppercase text-emerald-950">Critério de Aceite CA03</div>
+            <div class="leading-tight text-base font-extrabold">Baixar Relatório Médico em PDF (1 Clique)</div>
+          </div>
+        </button>
+      </div>
+
+      <!-- Área Estruturada que compõe o Relatório Médico e o PDF -->
+      <div id="medicalReportPrintableArea" class="bg-white text-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-8">
+        
+        <div class="border-b-2 border-slate-200 pb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <div class="flex items-center space-x-4">
+            <div class="w-14 h-14 rounded-2xl bg-emerald-600 text-white flex items-center justify-center text-3xl font-black">
+              C+
+            </div>
+            <div>
+              <h2 class="text-2xl font-black text-slate-900">Relatório Consolidado de Adesão e Métricas Clínicas</h2>
+              <p class="text-slate-500 text-xs">Cuidar+ Assistente Inteligente · Edital Centelha 3 Rondônia · Emissão: <span id="reportEmitDate">13/10/2026</span></p>
+            </div>
+          </div>
+          <div class="text-left sm:text-right bg-slate-50 p-3 rounded-2xl border border-slate-200">
+            <div class="text-xs font-bold text-slate-500 uppercase">Período de Monitoramento</div>
+            <div class="text-sm font-extrabold text-slate-900">Últimos 30 Dias</div>
+            <div class="text-xs text-emerald-700 font-semibold">Total de agendamentos: <span id="reportTotalSchedules">--</span></div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div class="p-5 rounded-2xl bg-emerald-50 border border-emerald-200">
+            <div class="text-xs font-bold text-emerald-800 uppercase">Taxa Global de Adesão</div>
+            <div class="text-4xl font-black text-emerald-700 mt-2" id="reportAdherenceRate">92%</div>
+            <div class="text-xs text-emerald-800 font-semibold mt-1">Classificação: Excelente (OMS)</div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-blue-50 border border-blue-200">
+            <div class="text-xs font-bold text-blue-800 uppercase">Doses Concluídas</div>
+            <div class="text-4xl font-black text-blue-700 mt-2" id="reportConcludedCount">--</div>
+            <div class="text-xs text-blue-800 font-semibold mt-1">Pontualmente registradas</div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-amber-50 border border-amber-200">
+            <div class="text-xs font-bold text-amber-800 uppercase">Omissões Justificadas</div>
+            <div class="text-4xl font-black text-amber-700 mt-2" id="reportJustifiedCount">--</div>
+            <div class="text-xs text-amber-800 font-semibold mt-1">Com motivo registrado</div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-purple-50 border border-purple-200">
+            <div class="text-xs font-bold text-purple-800 uppercase">Engajamento Cuidador</div>
+            <div class="text-4xl font-black text-purple-700 mt-2">100%</div>
+            <div class="text-xs text-purple-800 font-semibold mt-1">Micael Frota ativo</div>
+          </div>
+        </div>
+
+        <!-- Gráficos Clínicos com Chart.js -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h4 class="font-bold text-slate-900 text-base">Evolução da Pressão Arterial (30 Dias)</h4>
+                <p class="text-xs text-slate-500">Sistólica / Diastólica (mmHg) com linha de meta 140/90</p>
+              </div>
+              <i class="fa-solid fa-heart-pulse text-rose-500 text-xl"></i>
+            </div>
+            <div class="h-64">
+              <canvas id="chartPressao"></canvas>
+            </div>
+          </div>
+
+          <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h4 class="font-bold text-slate-900 text-base">Curva Glicêmica em Jejum (30 Dias)</h4>
+                <p class="text-xs text-slate-500">Valores em mg/dL (Meta: 70 a 110 mg/dL)</p>
+              </div>
+              <i class="fa-solid fa-droplet text-amber-500 text-xl"></i>
+            </div>
+            <div class="h-64">
+              <canvas id="chartGlicemia"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabela por Medicamento -->
+        <div class="space-y-3">
+          <h4 class="font-extrabold text-slate-900 text-lg flex items-center space-x-2">
+            <i class="fa-solid fa-table-list text-purple-600"></i>
+            <span>Adesão Específica por Medicamento e Ação</span>
+          </h4>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm border-collapse">
+              <thead>
+                <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+                  <th class="p-3 font-bold rounded-l-xl">Medicamento / Item</th>
+                  <th class="p-3 font-bold">Tipo</th>
+                  <th class="p-3 font-bold text-center">Previstos</th>
+                  <th class="p-3 font-bold text-center">Concluídos</th>
+                  <th class="p-3 font-bold text-center">Omissões</th>
+                  <th class="p-3 font-bold text-right rounded-r-xl">Taxa de Adesão</th>
+                </tr>
+              </thead>
+              <tbody id="reportItemTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Histórico de Omissões e Justificativas -->
+        <div class="space-y-3">
+          <h4 class="font-extrabold text-slate-900 text-lg flex items-center space-x-2">
+            <i class="fa-solid fa-triangle-exclamation text-amber-500"></i>
+            <span>Histórico de Justificativas e Ocorrências Relatadas</span>
+          </h4>
+          <div id="reportJustificationsList" class="space-y-2"></div>
+        </div>
+
+        <!-- Assinatura Médica -->
+        <div class="pt-8 border-t-2 border-slate-200 grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
+          <div class="text-xs text-slate-500 space-y-1">
+            <p><strong>Observações da Equipe APS:</strong> Paciente mantém acompanhamento ativo com auxílio do familiar Micael Frota. Sem sinais de hipotensão postural. Prescrições em conformidade.</p>
+            <p>Em conformidade com a LGPD e boas práticas de Saúde Digital (RNF02).</p>
+          </div>
+          <div class="text-center pt-8 border-t border-slate-300 md:border-t-0 md:pt-0">
+            <div class="w-48 mx-auto border-b border-slate-400 mb-1"></div>
+            <div class="text-xs font-bold text-slate-900">Dra. Camila Vasconcelos</div>
+            <div class="text-[10px] text-slate-500">CRM-RO 4521 / RQE 1289 · Médica APS UBS</div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- TELA 11: ASSISTENTE IA CUIDAR+ (INTELIGÊNCIA ARTIFICIAL)                -->
+    <!-- ======================================================================= -->
+    <section id="screen-ia-assistente" class="screen-view hidden space-y-6">
+      <div class="bg-gradient-to-r from-amber-600 to-orange-700 rounded-3xl p-6 sm:p-8 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 border border-amber-500/40">
+        <div>
+          <div class="inline-flex items-center space-x-2 bg-amber-950/80 px-3.5 py-1 rounded-full text-xs font-semibold text-amber-300 border border-amber-400/40 mb-2">
+            <i class="fa-solid fa-robot"></i>
+            <span>Módulo de Inteligência Artificial Preventiva Cuidar+</span>
+          </div>
+          <h1 class="text-3xl font-extrabold tracking-tight">
+            Análise Inteligente de Padrões e Riscos
+          </h1>
+          <p class="text-amber-100 text-sm max-w-xl mt-1">
+            Cruzamento algorítmico entre esquecimentos de medicações e picos pressóricos para prevenção de descompensações clínicas.
+          </p>
+        </div>
+        <button onclick="fetchAIInsights()" class="px-5 py-3.5 rounded-2xl bg-white text-slate-950 font-extrabold text-sm flex items-center justify-center space-x-2 shadow-lg transition-all hover:bg-amber-50">
+          <i class="fa-solid fa-rotate text-lg text-amber-600"></i>
+          <span>Recalcular Análise IA</span>
+        </button>
+      </div>
+
+      <div id="aiInsightsFullGrid" class="grid grid-cols-1 md:grid-cols-2 gap-5"></div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- TELA 12: PAINEL ADMINISTRATIVO: GESTÃO DE USUÁRIOS                      -->
+    <!-- ======================================================================= -->
+    <section id="screen-admin-usuarios" class="screen-view hidden space-y-6">
+      <div class="bg-slate-900 p-6 rounded-3xl border border-slate-800 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-2xl font-black text-white flex items-center space-x-2">
+            <i class="fa-solid fa-users-gear text-indigo-400"></i>
+            <span>Painel Administrativo: Gestão de Usuários</span>
+          </h2>
+          <p class="text-slate-400 text-sm">Controle de acessos, perfis cadastrados e auditoria de titulares</p>
+        </div>
+        <button onclick="navigateTo('cadastro')" class="px-5 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-xs flex items-center space-x-2 transition-all shadow-lg">
+          <i class="fa-solid fa-user-plus"></i>
+          <span>Novo Usuário</span>
+        </button>
+      </div>
+
+      <div class="bg-slate-900 rounded-3xl border border-slate-800 overflow-hidden shadow-sm">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="bg-slate-950 text-slate-400 border-b border-slate-800 font-bold uppercase">
+                <th class="p-4">Identificação / Nome</th>
+                <th class="p-4">Perfil</th>
+                <th class="p-4">Contato / Cidade</th>
+                <th class="p-4">Condições / Registro</th>
+                <th class="p-4 text-right">Ações</th>
+              </tr>
+            </thead>
+            <tbody id="adminUsersTableBody" class="divide-y divide-slate-800/80"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- TELA 13: PAINEL ADMINISTRATIVO: GESTÃO DE VÍNCULOS (RF05)               -->
+    <!-- ======================================================================= -->
+    <section id="screen-admin-vinculos" class="screen-view hidden space-y-6">
+      <div class="bg-slate-900 p-6 rounded-3xl border border-slate-800 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-2xl font-black text-white flex items-center space-x-2">
+            <i class="fa-solid fa-link text-cyan-400"></i>
+            <span>Gestão de Vínculos & Permissões (RF05)</span>
+          </h2>
+          <p class="text-slate-400 text-sm">Associação de cuidadores autorizados aos prontuários dos pacientes</p>
+        </div>
+        <button onclick="openNewVinculoModal()" class="px-5 py-3 rounded-2xl bg-cyan-600 hover:bg-cyan-500 text-white font-extrabold text-xs flex items-center space-x-2 transition-all shadow-lg">
+          <i class="fa-solid fa-plus"></i>
+          <span>Novo Vínculo Autorizado</span>
+        </button>
+      </div>
+
+      <div class="bg-slate-900 rounded-3xl border border-slate-800 overflow-hidden shadow-sm">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="bg-slate-950 text-slate-400 border-b border-slate-800 font-bold uppercase">
+                <th class="p-4">ID Vínculo</th>
+                <th class="p-4">Paciente</th>
+                <th class="p-4">Cuidador Autorizado</th>
+                <th class="p-4">Grau de Parentesco</th>
+                <th class="p-4">Nível de Permissão</th>
+                <th class="p-4 text-right">Ação</th>
+              </tr>
+            </thead>
+            <tbody id="adminVinculosTableBody" class="divide-y divide-slate-800/80"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- TELA 14: PAINEL ADMINISTRATIVO: AUDITORIA & LGPD (RNF02)                -->
+    <!-- ======================================================================= -->
+    <section id="screen-admin-lgpd" class="screen-view hidden space-y-6">
+      <div class="bg-slate-900 p-6 rounded-3xl border border-slate-800 shadow-sm flex items-center justify-between">
+        <div>
+          <h2 class="text-2xl font-black text-white flex items-center space-x-2">
+            <i class="fa-solid fa-file-shield text-emerald-400"></i>
+            <span>Auditoria, Segurança & Conformidade LGPD (RNF02)</span>
+          </h2>
+          <p class="text-slate-400 text-sm">Registro de rastreabilidade de acessos a dados sensíveis de saúde</p>
+        </div>
+        <span class="text-xs bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-3 py-1 rounded-full font-bold">
+          Lei 13.709/2018
+        </span>
+      </div>
+
+      <div class="bg-slate-900 rounded-3xl border border-slate-800 overflow-hidden shadow-sm">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="bg-slate-950 text-slate-400 border-b border-slate-800 font-bold uppercase">
+                <th class="p-4">Data / Hora</th>
+                <th class="p-4">Tipo de Ação</th>
+                <th class="p-4">Titular (ID)</th>
+                <th class="p-4">Descrição do Evento</th>
+              </tr>
+            </thead>
+            <tbody id="adminLgpdTableBody" class="divide-y divide-slate-800/80"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- TELA 15: CONFIGURAÇÕES DO SISTEMA & GOVERNANÇA                          -->
+    <!-- ======================================================================= -->
+    <section id="screen-configuracoes" class="screen-view hidden space-y-6">
+      <div class="bg-slate-900 p-6 rounded-3xl border border-slate-800 shadow-sm">
+        <h2 class="text-2xl font-black text-white flex items-center space-x-2">
+          <i class="fa-solid fa-sliders text-emerald-400"></i>
+          <span>Configurações do Sistema & Acessibilidade</span>
+        </h2>
+        <p class="text-slate-400 text-sm">Personalize a aparência, parâmetros de voz e manutenção do banco de dados</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-slate-900 p-6 rounded-3xl border border-slate-800 space-y-4">
+          <h3 class="text-base font-bold text-white flex items-center space-x-2 border-b border-slate-800 pb-3">
+            <i class="fa-solid fa-eye text-emerald-400"></i>
+            <span>Preferências de Visualização & Acessibilidade</span>
+          </h3>
+          <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-950 border border-slate-800">
+            <div>
+              <div class="text-xs font-bold text-white">Modo Alto Contraste (RNF01)</div>
+              <div class="text-[11px] text-slate-400">Otimizado para baixa visão e idosos</div>
+            </div>
+            <button onclick="toggleHighContrast()" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs border border-slate-700">
+              Alternar
+            </button>
+          </div>
+
+          <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-950 border border-slate-800">
+            <div>
+              <div class="text-xs font-bold text-white">Leitor por Voz Sintetizada</div>
+              <div class="text-[11px] text-slate-400">Pronuncia nomes de remédios e horários em voz alta</div>
+            </div>
+            <button onclick="toggleVoiceSpeech()" class="px-3 py-1.5 rounded-xl bg-emerald-500/20 text-emerald-300 font-bold text-xs border border-emerald-500/40">
+              Alternar
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-slate-900 p-6 rounded-3xl border border-slate-800 space-y-4">
+          <h3 class="text-base font-bold text-white flex items-center space-x-2 border-b border-slate-800 pb-3">
+            <i class="fa-solid fa-database text-rose-400"></i>
+            <span>Manutenção & Dados de Teste</span>
+          </h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Se você fez testes com tomadas de medicamentos, cadastro de itens ou exclusões e deseja retornar o sistema ao estado inicial perfeito de apresentação:
+          </p>
+          <button onclick="resetDemoData()" class="w-full py-3.5 rounded-2xl bg-rose-600/20 hover:bg-rose-600/30 text-rose-300 border border-rose-500/40 font-extrabold text-xs flex items-center justify-center space-x-2 transition-all">
+            <i class="fa-solid fa-arrows-rotate"></i>
+            <span>Restaurar Dados Originais de Demonstração</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- MODAIS COMPLEMENTARES (Justificativa, Novo Item, Medição, Nudge, Vínculo)  -->
+  <!-- ========================================================================= -->
+
+  <!-- Modal Justificativa de Omissão (RF04) -->
+  <div id="modalJustify" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-slate-900 rounded-3xl max-w-lg w-full p-6 sm:p-8 space-y-6 shadow-2xl border border-slate-800">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl">
+            <i class="fa-solid fa-circle-exclamation"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-extrabold text-white">Justificar Não Tomada</h3>
+            <p id="justifyItemSubtitle" class="text-xs text-slate-400 font-medium">Selecione o motivo com 1 clique</p>
+          </div>
+        </div>
+        <button onclick="closeModal('modalJustify')" class="w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="space-y-3">
+        <button type="button" onclick="selectJustificationReason('O remédio acabou ou faltou no posto')" 
+                class="reason-btn w-full p-4 rounded-2xl border border-slate-800 text-left font-bold text-slate-300 hover:border-amber-500 hover:bg-amber-500/10 flex items-center justify-between transition-all">
+          <span>💊 O remédio acabou / Falta no posto</span>
+          <i class="fa-solid fa-chevron-right text-slate-500 text-xs"></i>
+        </button>
+
+        <button type="button" onclick="selectJustificationReason('Senti enjoo ou desconforto gástrico')" 
+                class="reason-btn w-full p-4 rounded-2xl border border-slate-800 text-left font-bold text-slate-300 hover:border-amber-500 hover:bg-amber-500/10 flex items-center justify-between transition-all">
+          <span>🤢 Senti enjoo ou efeito colateral</span>
+          <i class="fa-solid fa-chevron-right text-slate-500 text-xs"></i>
+        </button>
+
+        <button type="button" onclick="selectJustificationReason('Estava fora de casa e esqueci de levar')" 
+                class="reason-btn w-full p-4 rounded-2xl border border-slate-800 text-left font-bold text-slate-300 hover:border-amber-500 hover:bg-amber-500/10 flex items-center justify-between transition-all">
+          <span>🚪 Estava fora de casa / Esqueci de levar</span>
+          <i class="fa-solid fa-chevron-right text-slate-500 text-xs"></i>
+        </button>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-400 mb-1">Ou digite uma observação personalizada:</label>
+          <input type="text" id="customJustifyInput" placeholder="Ex: Médico recomendou suspender temporariamente..." 
+                 class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white text-xs focus:border-amber-500 focus:outline-none">
+        </div>
+      </div>
+
+      <div class="flex space-x-3 pt-2">
+        <button onclick="closeModal('modalJustify')" class="flex-1 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs">
+          Voltar
+        </button>
+        <button onclick="submitJustification()" class="flex-1 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs shadow-lg">
+          Confirmar Motivo
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Novo Item de Cuidado (RF02) -->
+  <div id="modalNewItem" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-slate-900 rounded-3xl max-w-lg w-full p-6 sm:p-8 space-y-5 shadow-2xl border border-slate-800 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <h3 class="text-xl font-extrabold text-white flex items-center space-x-2">
+          <i class="fa-solid fa-plus-circle text-teal-400"></i>
+          <span>Novo Item de Cuidado</span>
+        </h3>
+        <button onclick="closeModal('modalNewItem')" class="w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form id="formNewItem" onsubmit="handleCreateItem(event)" class="space-y-4 text-xs font-semibold">
+        <div>
+          <label class="block text-slate-400 mb-1">Tipo de Ação</label>
+          <select id="newItemTipo" class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-teal-500 text-xs">
+            <option value="medicamento">💊 Medicamento</option>
+            <option value="medicao">❤️ Medição de Rotina (Pressão/Glicemia)</option>
+            <option value="consulta">🩺 Consulta Médica</option>
+            <option value="exame">📄 Exame Laboratorial</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-slate-400 mb-1">Nome / Descrição</label>
+          <input type="text" id="newItemDescricao" required placeholder="Ex: Enalapril 10mg ou Glicemia Jejum"
+                 class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-teal-500 text-xs">
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-400 mb-1">Dosagem</label>
+            <input type="text" id="newItemDosagem" placeholder="Ex: 1 comprimido"
+                   class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-teal-500 text-xs">
+          </div>
+          <div>
+            <label class="block text-slate-400 mb-1">Frequência</label>
+            <input type="text" id="newItemFrequencia" placeholder="Ex: 1x ao dia"
+                   class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-teal-500 text-xs">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-slate-400 mb-1">Horário Programado</label>
+          <input type="time" id="newItemHorario" required value="08:00"
+                 class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-teal-500 text-xs">
+        </div>
+
+        <div>
+          <label class="block text-slate-400 mb-1">Instruções para o Paciente</label>
+          <textarea id="newItemInstrucoes" rows="2" placeholder="Ex: Tomar após o café com água"
+                    class="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-teal-500 text-xs"></textarea>
+        </div>
+
+        <div class="flex items-center space-x-3 p-3 bg-slate-950 rounded-2xl border border-slate-800">
+          <input type="checkbox" id="newItemCritico" checked class="w-4 h-4 rounded text-teal-500 focus:ring-0">
+          <div>
+            <label for="newItemCritico" class="text-xs font-bold text-white cursor-pointer">Item Crítico / Uso Contínuo</label>
+            <p class="text-[10px] text-slate-400">Se atrasar >30 minutos, dispara alerta para o cuidador Micael</p>
+          </div>
+        </div>
+
+        <div class="flex space-x-3 pt-2">
+          <button type="button" onclick="closeModal('modalNewItem')" class="flex-1 py-3 rounded-xl bg-slate-800 text-slate-300 font-bold text-xs">Cancelar</button>
+          <button type="submit" class="flex-1 py-3 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-extrabold text-xs shadow-lg">Salvar no Plano</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Nova Medição (Pressão / Glicemia) -->
+  <div id="modalNewMetric" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-slate-900 rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-5 shadow-2xl border border-slate-800">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <h3 class="text-xl font-extrabold text-white flex items-center space-x-2">
+          <i class="fa-solid fa-heart-pulse text-rose-500"></i>
+          <span>Registrar Medição de Saúde</span>
+        </h3>
+        <button onclick="closeModal('modalNewMetric')" class="w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form id="formNewMetric" onsubmit="handleCreateMetric(event)" class="space-y-4 text-xs font-semibold">
+        <div>
+          <label class="block text-slate-400 mb-1">Tipo de Medição</label>
+          <select id="metricTipoSelect" onchange="toggleMetricInputs()" class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:border-rose-500 focus:outline-none text-xs">
+            <option value="pressao">❤️ Pressão Arterial (Sistólica / Diastólica)</option>
+            <option value="glicemia">🩸 Glicemia Capilar (mg/dL)</option>
+          </select>
+        </div>
+
+        <div id="inputsPressao" class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-400 mb-1">Sistólica (Máx)</label>
+            <input type="number" id="inputSistolica" value="120" min="50" max="250" class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white font-bold text-sm focus:border-rose-500 focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-slate-400 mb-1">Diastólica (Mín)</label>
+            <input type="number" id="inputDiastolica" value="80" min="30" max="150" class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white font-bold text-sm focus:border-rose-500 focus:outline-none">
+          </div>
+        </div>
+
+        <div id="inputsGlicemia" class="hidden space-y-3">
+          <div>
+            <label class="block text-slate-400 mb-1">Valor da Glicemia (mg/dL)</label>
+            <input type="number" id="inputGlicemiaValor" value="98" min="30" max="500" class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white font-bold text-sm focus:border-amber-500 focus:outline-none">
+          </div>
+          <div class="flex space-x-4">
+            <label class="flex items-center space-x-2 text-slate-300">
+              <input type="radio" name="glicTipo" value="jejum" checked class="text-amber-500">
+              <span>Em Jejum</span>
+            </label>
+            <label class="flex items-center space-x-2 text-slate-300">
+              <input type="radio" name="glicTipo" value="pos_prandial" class="text-amber-500">
+              <span>Pós-Refeição</span>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-slate-400 mb-1">Observações</label>
+          <input type="text" id="metricObservacao" placeholder="Ex: Sentado em repouso de 5 min"
+                 class="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-600 focus:border-rose-500 focus:outline-none text-xs">
+        </div>
+
+        <div class="flex space-x-3 pt-2">
+          <button type="button" onclick="closeModal('modalNewMetric')" class="flex-1 py-3 rounded-xl bg-slate-800 text-slate-300 font-bold text-xs">Cancelar</button>
+          <button type="submit" class="flex-1 py-3 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-extrabold text-xs shadow-lg">Salvar Medição</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Disparo Remoto Nudge (CA02) -->
+  <div id="modalNudge" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-slate-900 rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-5 shadow-2xl border border-slate-800">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <h3 class="text-xl font-extrabold text-white flex items-center space-x-2">
+          <i class="fa-solid fa-bell text-amber-400"></i>
+          <span>Disparar Lembrete ao Paciente</span>
+        </h3>
+        <button onclick="closeModal('modalNudge')" class="w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <p class="text-xs text-slate-400 leading-relaxed">
+        Este alerta emitirá um sinal sonoro e falará a mensagem em voz alta no dispositivo de Seu Antenor em tempo real via SSE.
+      </p>
+
+      <div class="space-y-2">
+        <button type="button" onclick="setNudgePreset('Seu Antenor, por favor tome o remédio com um copo de água!')" 
+                class="w-full text-left p-3 rounded-xl border border-slate-800 text-xs font-bold text-slate-300 hover:bg-amber-500/10 hover:border-amber-500/40">
+          🔔 "Seu Antenor, por favor tome o remédio com água!"
+        </button>
+        <button type="button" onclick="setNudgePreset('Pai, lembre de aferir sua pressão arterial agora!')" 
+                class="w-full text-left p-3 rounded-xl border border-slate-800 text-xs font-bold text-slate-300 hover:bg-amber-500/10 hover:border-amber-500/40">
+          ❤️ "Pai, lembre de aferir sua pressão arterial agora!"
+        </button>
+        <input type="text" id="customNudgeMessage" placeholder="Ou digite sua mensagem personalizada..." 
+               class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white text-xs focus:border-amber-500 focus:outline-none">
+      </div>
+
+      <div class="flex space-x-3 pt-2">
+        <button onclick="closeModal('modalNudge')" class="flex-1 py-3 rounded-xl bg-slate-800 text-slate-300 font-bold text-xs">Cancelar</button>
+        <button onclick="sendNudgeNotification()" class="flex-1 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs shadow-lg">Enviar Agora</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Novo Vínculo (RF05) -->
+  <div id="modalNewVinculo" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-slate-900 rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-5 shadow-2xl border border-slate-800">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <h3 class="text-xl font-extrabold text-white flex items-center space-x-2">
+          <i class="fa-solid fa-link text-cyan-400"></i>
+          <span>Vincular Cuidador Autorizado</span>
+        </h3>
+        <button onclick="closeModal('modalNewVinculo')" class="w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form id="formNewVinculo" onsubmit="handleCreateVinculo(event)" class="space-y-4 text-xs font-semibold">
+        <div>
+          <label class="block text-slate-400 mb-1">Paciente Titular</label>
+          <select id="vinculoPacienteSelect" class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none text-xs"></select>
+        </div>
+        <div>
+          <label class="block text-slate-400 mb-1">Cuidador / Familiar</label>
+          <select id="vinculoCuidadorSelect" class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none text-xs"></select>
+        </div>
+        <div>
+          <label class="block text-slate-400 mb-1">Grau de Parentesco / Relação</label>
+          <input type="text" id="vinculoParentesco" required placeholder="Ex: Filho, Cônjuge, Cuidador Formal"
+                 class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-600 focus:outline-none text-xs">
+        </div>
+        <div>
+          <label class="block text-slate-400 mb-1">Nível de Permissão</label>
+          <select id="vinculoPermissao" class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none text-xs">
+            <option value="edicao_total">Edição Total (Cadastrar/Alterar remédios e receber alertas)</option>
+            <option value="visualizacao">Visualização Apenas (Somente acompanhar status)</option>
+          </select>
+        </div>
+
+        <div class="flex space-x-3 pt-2">
+          <button type="button" onclick="closeModal('modalNewVinculo')" class="flex-1 py-3 rounded-xl bg-slate-800 text-slate-300 font-bold text-xs">Cancelar</button>
+          <button type="submit" class="flex-1 py-3 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-extrabold text-xs shadow-lg">Salvar Vínculo</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- RODAPÉ INSTITUCIONAL -->
+  <footer class="bg-slate-950 border-t border-slate-800 py-6 text-center text-xs text-slate-500 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-2">
+      <div class="font-bold text-slate-400">
+        Cuidar+ — Assistente Inteligente para Acompanhamento de Tratamentos
+      </div>
+      <div>
+        Aluno Desenvolvedor: <strong>Micael Lima Araujo Frota</strong> (3º B T.I.) · Edital Centelha 3 Rondônia
+      </div>
+      <div class="text-[11px] text-slate-600">
+        Desenvolvido com foco em usabilidade para idosos, segurança LGPD e integração com a Atenção Primária à Saúde.
+      </div>
+    </div>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>
