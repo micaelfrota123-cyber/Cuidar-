@@ -25,3 +25,4 @@ $RECYCLE.BIN/
 # Temporary and log files
 *.log
 *.tmp
+~$*
